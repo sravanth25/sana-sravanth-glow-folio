@@ -40,7 +40,7 @@ const HeroSection = () => {
 
       <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
         <div className="animate-fade-in">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight px-[8px] py-[10px] mx-[8px] my-[8px] text-center">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight py-[10px] mx-[8px] my-[8px] text-center px-[15px]">
             I help brands grow{' '}
             <span className="text-cyan-400 relative">
               smarter
