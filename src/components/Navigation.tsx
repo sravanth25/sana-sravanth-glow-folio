@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight } from 'lucide-react';
 
@@ -9,9 +8,8 @@ const Navigation = () => {
 
   const navItems = [
     { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'experience', label: 'Experience' },
-    { id: 'contact', label: 'Hire Me' }
+    { id: 'experience', label: 'My Work' },
+    { id: 'contact', label: 'Hire for Freelancing' }
   ];
 
   useEffect(() => {
@@ -22,7 +20,7 @@ const Navigation = () => {
       setScrollProgress(currentProgress);
 
       // Update active section
-      const sections = ['home', 'about', 'experience', 'contact'];
+      const sections = ['home', 'experience', 'contact'];
       const scrollY = window.scrollY + 100;
       
       for (const section of sections) {

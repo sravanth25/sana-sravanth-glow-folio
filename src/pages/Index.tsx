@@ -3,7 +3,6 @@ import { useState, useEffect, useRef } from 'react';
 import { ChevronDown, Menu, X, ArrowUp, Mail, Linkedin, MapPin, Phone } from 'lucide-react';
 import Navigation from '../components/Navigation';
 import HeroSection from '../components/HeroSection';
-import AboutSection from '../components/AboutSection';
 import ExperienceSection from '../components/ExperienceSection';
 import SkillsSection from '../components/SkillsSection';
 import CertificationsSection from '../components/CertificationsSection';
@@ -32,7 +31,6 @@ const Index = () => {
       
       <main>
         <HeroSection />
-        <AboutSection />
         <ExperienceSection />
         <SkillsSection />
         <CertificationsSection />
