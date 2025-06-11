@@ -1,15 +1,18 @@
+
 import { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, ArrowRight } from 'lucide-react';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
   const [scrollProgress, setScrollProgress] = useState(0);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const navItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'experience', label: 'My Work' },
-    { id: 'contact', label: 'Hire for Freelancing' }
+    { id: '/', label: 'Home' },
+    { id: '/my-work', label: 'My Work' },
+    { id: '/hire-me', label: 'Hire for Freelancing' }
   ];
 
   useEffect(() => {
@@ -18,32 +21,14 @@ const Navigation = () => {
       const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
       const currentProgress = (window.scrollY / totalScroll) * 100;
       setScrollProgress(currentProgress);
-
-      // Update active section
-      const sections = ['home', 'experience', 'contact'];
-      const scrollY = window.scrollY + 100;
-      
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (scrollY >= offsetTop && scrollY < offsetTop + offsetHeight) {
-            setActiveSection(section);
-            break;
-          }
-        }
-      }
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+  const navigateToPage = (path: string) => {
+    navigate(path);
     setIsMenuOpen(false);
   };
 
@@ -53,7 +38,7 @@ const Navigation = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div 
-            onClick={() => scrollToSection('home')} 
+            onClick={() => navigateToPage('/')} 
             className="text-2xl font-bold text-cyan-400 cursor-pointer hover:text-cyan-300 transition-colors duration-300"
           >
             Sana Sravanth
@@ -64,14 +49,14 @@ const Navigation = () => {
             {navItems.map((item) => (
               <button
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
+                onClick={() => navigateToPage(item.id)}
                 className={`nav-link relative text-white hover:text-cyan-400 transition-colors duration-300 ${
-                  activeSection === item.id ? 'active' : ''
+                  location.pathname === item.id ? 'active' : ''
                 }`}
               >
                 {item.label}
                 {/* Active dot indicator */}
-                {activeSection === item.id && (
+                {location.pathname === item.id && (
                   <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-cyan-400 rounded-full glow-dot"></div>
                 )}
               </button>
@@ -79,7 +64,7 @@ const Navigation = () => {
             
             {/* CTA Button */}
             <button 
-              onClick={() => scrollToSection('contact')}
+              onClick={() => navigateToPage('/hire-me')}
               className="group relative px-6 py-2 border border-cyan-400/50 text-cyan-400 rounded-full hover:border-cyan-400 hover:bg-cyan-400/10 transition-all duration-300 overflow-hidden"
             >
               <span className="relative z-10 flex items-center space-x-2">
@@ -127,7 +112,7 @@ const Navigation = () => {
                 {navItems.map((item, index) => (
                   <button
                     key={item.id}
-                    onClick={() => scrollToSection(item.id)}
+                    onClick={() => navigateToPage(item.id)}
                     className={`block w-full text-left text-xl text-white hover:text-cyan-400 transition-all duration-300 py-3 transform ${
                       isMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-4 opacity-0'
                     }`}
@@ -141,7 +126,7 @@ const Navigation = () => {
                 
                 {/* Mobile CTA */}
                 <button 
-                  onClick={() => scrollToSection('contact')}
+                  onClick={() => navigateToPage('/hire-me')}
                   className={`w-full mt-8 px-6 py-3 border border-cyan-400/50 text-cyan-400 rounded-full hover:border-cyan-400 hover:bg-cyan-400/10 transition-all duration-300 transform ${
                     isMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-4 opacity-0'
                   }`}
