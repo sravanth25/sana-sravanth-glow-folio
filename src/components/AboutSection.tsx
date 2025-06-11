@@ -29,9 +29,13 @@ const AboutSection = () => {
           {/* Image */}
           <div className={`${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
             <div className="relative group">
-              <div className="w-full h-96 bg-gradient-to-br from-cyan-400/20 to-transparent rounded-2xl flex items-center justify-center hover:scale-105 transition-transform duration-300">
-                <div className="w-64 h-64 bg-cyan-400/10 rounded-full flex items-center justify-center">
-                  <span className="text-6xl">👋</span>
+              <div className="w-full h-96 bg-gradient-to-br from-cyan-400/20 to-transparent rounded-2xl p-8 hover:scale-105 transition-transform duration-300">
+                <div className="w-full h-full rounded-xl overflow-hidden">
+                  <img 
+                    src="/lovable-uploads/4573ccc2-a1f3-41aa-b600-6d064367deb9.png"
+                    alt="Sana Sravanth"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
             </div>
