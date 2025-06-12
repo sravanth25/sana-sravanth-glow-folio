@@ -18,7 +18,7 @@ const Footer = () => {
 
           <div className="flex items-center space-x-6">
             <a
-              href="mailto:hi@sanasravanth.com"
+              href="mailto:sanasravanth25@gmail.com"
               className="p-3 bg-gray-800/50 rounded-full text-gray-400 hover:text-cyan-400 hover:bg-gray-800 transition-all duration-300 hover:scale-110"
               aria-label="Email"
             >

@@ -114,7 +114,7 @@ const ContactSection = () => {
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <a
-                href="mailto:hi@sanasravanth.com"
+                href="mailto:sanasravanth25@gmail.com"
                 className="group inline-flex items-center px-6 py-3 bg-cyan-400 text-black font-semibold rounded-full hover:bg-cyan-300 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-400/25"
               >
                 <Mail className="mr-2 group-hover:scale-110 transition-transform duration-300" size={20} />
@@ -133,7 +133,7 @@ const ContactSection = () => {
             </div>
             
             <p className="text-gray-400 mt-4 text-sm">
-              Email: <span className="text-cyan-400">hi@sanasravanth.com</span>
+              Email: <span className="text-cyan-400">sanasravanth25@gmail.com</span>
             </p>
           </div>
         </div>
