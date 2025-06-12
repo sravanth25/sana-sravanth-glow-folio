@@ -1,6 +1,7 @@
 
 import { useEffect, useRef, useState } from 'react';
-import { Search, TrendingUp, Target, Brain, Palette, Settings, Mail, Linkedin } from 'lucide-react';
+import { Search, TrendingUp, Target, Brain, Palette, Settings, Linkedin } from 'lucide-react';
+import ContactForm from './ContactForm';
 
 const ContactSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -106,35 +107,20 @@ const ContactSection = () => {
           })}
         </div>
 
-        {/* Contact CTA Box */}
-        <div className={`${isVisible ? 'animate-fade-in' : 'opacity-0'} transition-opacity duration-700 delay-1000`}>
-          <div className="bg-gradient-to-r from-cyan-400/10 to-purple-400/10 p-8 rounded-2xl border border-gray-700 hover:border-cyan-400/50 transition-all duration-300 text-center">
-            <h3 className="text-2xl font-bold text-white mb-4">Ready to grow your brand?</h3>
-            <p className="text-gray-300 mb-6">Let's discuss how we can take your digital presence to the next level.</p>
-            
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <a
-                href="mailto:sanasravanth25@gmail.com"
-                className="group inline-flex items-center px-6 py-3 bg-cyan-400 text-black font-semibold rounded-full hover:bg-cyan-300 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-400/25"
-              >
-                <Mail className="mr-2 group-hover:scale-110 transition-transform duration-300" size={20} />
-                Send Inquiry
-              </a>
-              
-              <a
-                href="https://in.linkedin.com/in/sana-sravanth-3b084a231"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center px-6 py-3 bg-gray-800/50 text-white font-semibold rounded-full hover:bg-gray-700 transition-all duration-300 hover:scale-105 border border-gray-600 hover:border-cyan-400/50"
-              >
-                <Linkedin className="mr-2" size={20} />
-                LinkedIn
-              </a>
-            </div>
-            
-            <p className="text-gray-400 mt-4 text-sm">
-              Email: <span className="text-cyan-400">sanasravanth25@gmail.com</span>
-            </p>
+        {/* Contact Form */}
+        <div className={`${isVisible ? 'animate-fade-in' : 'opacity-0'} transition-opacity duration-700 delay-1000 max-w-2xl mx-auto`}>
+          <ContactForm />
+          
+          <div className="flex justify-center mt-6">
+            <a
+              href="https://in.linkedin.com/in/sana-sravanth-3b084a231"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-6 py-3 bg-gray-800/50 text-white font-semibold rounded-full hover:bg-gray-700 transition-all duration-300 hover:scale-105 border border-gray-600 hover:border-cyan-400/50"
+            >
+              <Linkedin className="mr-2" size={20} />
+              Connect on LinkedIn
+            </a>
           </div>
         </div>
       </div>
