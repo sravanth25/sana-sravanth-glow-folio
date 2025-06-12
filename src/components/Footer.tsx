@@ -18,14 +18,14 @@ const Footer = () => {
 
           <div className="flex items-center space-x-6">
             <a
-              href="mailto:sana.sravanth@email.com"
+              href="mailto:hi@sanasravanth.com"
               className="p-3 bg-gray-800/50 rounded-full text-gray-400 hover:text-cyan-400 hover:bg-gray-800 transition-all duration-300 hover:scale-110"
               aria-label="Email"
             >
               <Mail size={20} />
             </a>
             <a
-              href="https://linkedin.com/in/sanasravanth"
+              href="https://in.linkedin.com/in/sana-sravanth-3b084a231"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 bg-gray-800/50 rounded-full text-gray-400 hover:text-cyan-400 hover:bg-gray-800 transition-all duration-300 hover:scale-110"

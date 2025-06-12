@@ -122,7 +122,7 @@ const ContactSection = () => {
               </a>
               
               <a
-                href="https://linkedin.com/in/sana-sravanth"
+                href="https://in.linkedin.com/in/sana-sravanth-3b084a231"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-6 py-3 bg-gray-800/50 text-white font-semibold rounded-full hover:bg-gray-700 transition-all duration-300 hover:scale-105 border border-gray-600 hover:border-cyan-400/50"
