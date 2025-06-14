@@ -68,42 +68,42 @@ const HeroSection = () => {
         />
 
         {/* Digital Marketing Icons - Floating Background Elements */}
-        <div className="absolute top-20 left-20 text-cyan-400/40 animate-pulse" style={{ animationDelay: '0s' }}>
+        <div className="absolute top-20 left-20 text-cyan-400/20 animate-pulse" style={{ animationDelay: '0s' }}>
           <TrendingUp size={32} />
         </div>
-        <div className="absolute top-32 right-32 text-blue-400/40 animate-bounce" style={{ animationDelay: '1s' }}>
+        <div className="absolute top-32 right-32 text-blue-400/20 animate-bounce" style={{ animationDelay: '1s' }}>
           <Target size={28} />
         </div>
-        <div className="absolute bottom-40 left-40 text-cyan-300/40 animate-pulse" style={{ animationDelay: '2s' }}>
+        <div className="absolute bottom-40 left-40 text-cyan-300/20 animate-pulse" style={{ animationDelay: '2s' }}>
           <BarChart size={24} />
         </div>
-        <div className="absolute top-1/2 right-20 text-purple-400/40 animate-bounce" style={{ animationDelay: '3s' }}>
+        <div className="absolute top-1/2 right-20 text-purple-400/20 animate-bounce" style={{ animationDelay: '3s' }}>
           <Users size={26} />
         </div>
-        <div className="absolute bottom-1/3 right-1/4 text-cyan-400/40 animate-pulse" style={{ animationDelay: '4s' }}>
+        <div className="absolute bottom-1/3 right-1/4 text-cyan-400/20 animate-pulse" style={{ animationDelay: '4s' }}>
           <Globe size={30} />
         </div>
-        <div className="absolute top-1/4 left-1/3 text-blue-400/40 animate-bounce" style={{ animationDelay: '5s' }}>
+        <div className="absolute top-1/4 left-1/3 text-blue-400/20 animate-bounce" style={{ animationDelay: '5s' }}>
           <Mail size={22} />
         </div>
-        <div className="absolute bottom-20 right-1/3 text-cyan-300/40 animate-pulse" style={{ animationDelay: '6s' }}>
+        <div className="absolute bottom-20 right-1/3 text-cyan-300/20 animate-pulse" style={{ animationDelay: '6s' }}>
           <Search size={25} />
         </div>
-        <div className="absolute top-2/3 left-1/4 text-purple-400/40 animate-bounce" style={{ animationDelay: '7s' }}>
+        <div className="absolute top-2/3 left-1/4 text-purple-400/20 animate-bounce" style={{ animationDelay: '7s' }}>
           <Zap size={20} />
         </div>
-        <div className="absolute top-1/3 right-1/2 text-cyan-400/40 animate-pulse" style={{ animationDelay: '8s' }}>
+        <div className="absolute top-1/3 right-1/2 text-cyan-400/20 animate-pulse" style={{ animationDelay: '8s' }}>
           <Award size={24} />
         </div>
 
         {/* Additional smaller marketing icons */}
-        <div className="absolute top-1/6 left-1/2 text-blue-400/40 animate-bounce" style={{ animationDelay: '2.5s' }}>
+        <div className="absolute top-1/6 left-1/2 text-blue-400/20 animate-bounce" style={{ animationDelay: '2.5s' }}>
           <TrendingUp size={18} />
         </div>
-        <div className="absolute bottom-1/4 left-1/6 text-cyan-300/40 animate-pulse" style={{ animationDelay: '3.5s' }}>
+        <div className="absolute bottom-1/4 left-1/6 text-cyan-300/20 animate-pulse" style={{ animationDelay: '3.5s' }}>
           <Target size={16} />
         </div>
-        <div className="absolute top-3/4 right-1/6 text-purple-400/40 animate-bounce" style={{ animationDelay: '4.5s' }}>
+        <div className="absolute top-3/4 right-1/6 text-purple-400/20 animate-bounce" style={{ animationDelay: '4.5s' }}>
           <BarChart size={20} />
         </div>
 
