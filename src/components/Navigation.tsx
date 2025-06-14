@@ -50,23 +50,23 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 bg-black/90 backdrop-blur-md border border-gray-800 rounded-full px-6 py-3">
-      <div className="flex items-center justify-between">
+    <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 bg-black/90 backdrop-blur-md border border-gray-800 rounded-full px-12 py-3 min-w-[600px]">
+      <div className="flex items-center justify-between w-full">
         {/* Logo */}
         <div
           onClick={() => scrollToSection('home')}
-          className="text-xl font-bold text-cyan-400 cursor-pointer hover:text-cyan-300 transition-colors duration-300 mr-8"
+          className="text-xl font-bold text-cyan-400 cursor-pointer hover:text-cyan-300 transition-colors duration-300 mr-12"
         >
           Sana Sravanth
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-6">
+        <div className="hidden md:flex items-center space-x-8">
           {navItems.map(item => (
             <button
               key={item.id}
               onClick={() => scrollToSection(item.id)}
-              className={`nav-link relative text-white hover:text-cyan-400 transition-colors duration-300 px-4 py-2 rounded-full ${
+              className={`nav-link relative text-white hover:text-cyan-400 transition-colors duration-300 px-6 py-2 rounded-full ${
                 activeSection === item.id ? 'active bg-cyan-400/20' : 'hover:bg-gray-800/50'
               }`}
             >
