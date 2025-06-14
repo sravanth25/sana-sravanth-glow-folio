@@ -10,7 +10,7 @@ const SkillsSection = () => {
     { name: 'Google Ads', level: 90 },
     { name: 'Meta Ads', level: 85 },
     { name: 'SEO', level: 88 },
-    { name: 'GA4', level: 82 },
+    { name: 'Figma', level: 82 },
     { name: 'SEMrush', level: 80 },
     { name: 'Email Marketing', level: 85 },
   ];
