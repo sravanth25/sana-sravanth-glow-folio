@@ -66,7 +66,7 @@ const SkillsSection = () => {
             <div className="grid grid-cols-2 gap-4">
               {tools.map((tool, index) => <div key={tool} style={{
               animationDelay: `${index * 100}ms`
-            }} className="bg-gray-800/50 p-4 text-center hover:bg-gray-800/70 hover:scale-105 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-cyan-400/50 rounded-md mx-[4px] my-px">
+            }} className="bg-gray-800/50 p-4 text-center hover:bg-gray-800/70 hover:scale-105 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-cyan-400/50 rounded-md mx-[4px] my-0">
                   <span className="text-white font-medium">{tool}</span>
                 </div>)}
             </div>
