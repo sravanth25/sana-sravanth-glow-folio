@@ -80,7 +80,6 @@ const HeroSection = () => {
               stroke="rgb(6, 182, 212)"
               strokeWidth="2"
               points="0,30 20,25 40,15 60,20 80,10 100,5 120,8 140,3 160,7 180,2 200,5 220,1 240,4 256,0"
-              className="animate-pulse"
             />
           </svg>
           
@@ -90,8 +89,6 @@ const HeroSection = () => {
               stroke="rgb(34, 197, 94)"
               strokeWidth="2"
               points="0,25 20,20 40,30 60,15 80,25 100,10 120,20 140,8 160,18 180,5 200,15 220,3 240,12 256,2"
-              className="animate-pulse"
-              style={{ animationDelay: '1s' }}
             />
           </svg>
         </div>
@@ -112,15 +109,14 @@ const HeroSection = () => {
           ))}
         </div>
 
-        {/* Glowing orbs with marketing colors */}
+        {/* Glowing orbs with marketing colors - removed pulse animations */}
         <div 
           className="absolute w-96 h-96 rounded-full opacity-20 blur-3xl"
           style={{
             background: 'radial-gradient(circle, #06b6d4, #3b82f6)',
             transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)`,
             left: '10%',
-            top: '20%',
-            animation: 'pulse 6s ease-in-out infinite'
+            top: '20%'
           }}
         />
         
@@ -130,24 +126,23 @@ const HeroSection = () => {
             background: 'radial-gradient(circle, #10b981, #059669)',
             transform: `translate(${mousePosition.x * -0.015}px, ${mousePosition.y * -0.015}px)`,
             right: '15%',
-            bottom: '25%',
-            animation: 'pulse 8s ease-in-out infinite'
+            bottom: '25%'
           }}
         />
 
-        {/* Performance metrics overlay */}
+        {/* Performance metrics overlay - removed pulse animations */}
         <div className="absolute top-10 right-10 opacity-20">
           <div className="text-cyan-400 font-mono text-sm space-y-1">
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+              <div className="w-2 h-2 bg-green-400 rounded-full"></div>
               <span>ROI: +247%</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+              <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
               <span>CTR: 12.4%</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
+              <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
               <span>Conv: 8.9%</span>
             </div>
           </div>
