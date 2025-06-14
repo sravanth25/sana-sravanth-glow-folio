@@ -129,41 +129,6 @@ const HeroSection = () => {
             bottom: '25%'
           }}
         />
-
-        {/* Performance metrics overlay - removed pulse animations */}
-        <div className="absolute top-10 right-10 opacity-20">
-          <div className="text-cyan-400 font-mono text-sm space-y-1">
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-              <span>ROI: +247%</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-              <span>CTR: 12.4%</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
-              <span>Conv: 8.9%</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="absolute bottom-10 left-10 opacity-20">
-          <div className="text-cyan-400 font-mono text-sm space-y-1">
-            <div className="flex items-center gap-2">
-              <TrendingUp size={16} />
-              <span>Engagement ↗</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Target size={16} />
-              <span>Targeting Active</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Users size={16} />
-              <span>Audience: 2.4M</span>
-            </div>
-          </div>
-        </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
