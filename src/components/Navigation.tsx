@@ -50,23 +50,23 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 bg-black/90 backdrop-blur-md border border-gray-800 rounded-full px-8 py-4">
+    <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 bg-black/90 backdrop-blur-md border border-gray-800 rounded-full px-6 py-3">
       <div className="flex items-center justify-between">
         {/* Logo */}
         <div
           onClick={() => scrollToSection('home')}
-          className="text-2xl font-bold text-cyan-400 cursor-pointer hover:text-cyan-300 transition-colors duration-300 mr-10"
+          className="text-xl font-bold text-cyan-400 cursor-pointer hover:text-cyan-300 transition-colors duration-300 mr-8"
         >
           Sana Sravanth
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-6">
           {navItems.map(item => (
             <button
               key={item.id}
               onClick={() => scrollToSection(item.id)}
-              className={`nav-link relative text-white hover:text-cyan-400 transition-colors duration-300 px-5 py-3 rounded-full text-lg ${
+              className={`nav-link relative text-white hover:text-cyan-400 transition-colors duration-300 px-4 py-2 rounded-full ${
                 activeSection === item.id ? 'active bg-cyan-400/20' : 'hover:bg-gray-800/50'
               }`}
             >
@@ -78,21 +78,21 @@ const Navigation = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden text-white hover:text-cyan-400 transition-colors duration-300 p-3 rounded-full hover:bg-gray-800/50"
+          className="md:hidden text-white hover:text-cyan-400 transition-colors duration-300 p-2 rounded-full hover:bg-gray-800/50"
         >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="md:hidden absolute top-full left-0 right-0 mt-2 bg-black/95 backdrop-blur-md border border-gray-800 rounded-2xl animate-fade-in">
-          <div className="px-6 py-6 space-y-3">
+          <div className="px-4 py-4 space-y-2">
             {navItems.map((item, index) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="block w-full text-left text-white hover:text-cyan-400 transition-colors duration-300 py-4 px-5 rounded-full hover:bg-gray-800/50 text-lg"
+                className="block w-full text-left text-white hover:text-cyan-400 transition-colors duration-300 py-3 px-4 rounded-full hover:bg-gray-800/50"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 {item.label}
