@@ -15,7 +15,7 @@ const SkillsSection = () => {
 
   const tools = [
     'Google Ads', 'Meta Ads', 'SEMrush', 'Canva', 'Figma',
-    'WhatsApp Automation (Meta Cloud API & WooSms)'
+    'WhatsApp Automation (Meta Cloud API)'
   ];
 
   useEffect(() => {
