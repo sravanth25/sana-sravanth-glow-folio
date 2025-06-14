@@ -52,15 +52,23 @@ const ExperienceSection = () => {
                   <ul className="space-y-3 text-gray-300">
                     <li className="flex items-start space-x-2">
                       <div className="w-1.5 h-1.5 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
-                      <span>Led SEO & PPC campaigns boosting lead generation by 40%</span>
+                      <span>Designed compelling social media posters and graphics that increased brand engagement by 60%</span>
                     </li>
                     <li className="flex items-start space-x-2">
                       <div className="w-1.5 h-1.5 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
-                      <span>Created Looker Studio dashboards for real-time analytics</span>
+                      <span>Authored SEO-optimized blog content and website copy, driving organic traffic growth of 45%</span>
                     </li>
                     <li className="flex items-start space-x-2">
                       <div className="w-1.5 h-1.5 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
-                      <span>Managed performance ads on Meta & Google with 3.2x ROAS</span>
+                      <span>Implemented WhatsApp Business automation flows, improving customer response time by 80%</span>
+                    </li>
+                    <li className="flex items-start space-x-2">
+                      <div className="w-1.5 h-1.5 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
+                      <span>Executed high-performing Meta and Google Ads campaigns achieving 3.2x ROAS across multiple clients</span>
+                    </li>
+                    <li className="flex items-start space-x-2">
+                      <div className="w-1.5 h-1.5 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
+                      <span>Built comprehensive Looker Studio dashboards for real-time campaign performance tracking</span>
                     </li>
                   </ul>
                 </div>
