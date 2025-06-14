@@ -1,5 +1,5 @@
 
-import { ChevronDown, TrendingUp, BarChart3, Target, Users, Zap } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 const HeroSection = () => {
@@ -40,96 +40,57 @@ const HeroSection = () => {
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Digital Marketing Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-black">
-        {/* Animated grid pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
+      {/* Dynamic Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black">
+        <div className="absolute inset-0 bg-gradient-to-tr from-cyan-900/20 via-transparent to-blue-900/20"></div>
+      </div>
+
+      {/* Animated Geometric Shapes */}
+      <div className="absolute inset-0">
+        {/* Large floating circles */}
+        <div 
+          className="absolute w-96 h-96 bg-gradient-to-r from-cyan-400/10 to-blue-500/10 rounded-full blur-3xl animate-pulse"
+          style={{
+            transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)`,
+            left: '10%',
+            top: '20%',
+            animationDuration: '4s'
+          }}
+        />
+        <div 
+          className="absolute w-64 h-64 bg-gradient-to-r from-purple-400/5 to-cyan-400/5 rounded-full blur-2xl animate-pulse"
+          style={{
+            transform: `translate(${mousePosition.x * -0.01}px, ${mousePosition.y * -0.01}px)`,
+            right: '10%',
+            bottom: '20%',
+            animationDuration: '6s'
+          }}
+        />
+
+        {/* Floating geometric elements */}
+        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-cyan-400/30 rotate-45 animate-bounce" style={{ animationDelay: '0s' }}></div>
+        <div className="absolute top-1/3 right-1/3 w-3 h-3 bg-blue-400/20 rounded-full animate-bounce" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute bottom-1/4 left-1/3 w-1 h-8 bg-cyan-300/20 animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-2/3 right-1/4 w-4 h-1 bg-purple-400/20 animate-pulse" style={{ animationDelay: '3s' }}></div>
+
+        {/* Grid overlay */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="h-full w-full" style={{
             backgroundImage: `
-              linear-gradient(rgba(6, 182, 212, 0.1) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(6, 182, 212, 0.1) 1px, transparent 1px)
+              linear-gradient(rgba(34, 211, 238, 0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(34, 211, 238, 0.1) 1px, transparent 1px)
             `,
-            backgroundSize: '50px 50px',
-            animation: 'grid-move 20s linear infinite'
+            backgroundSize: '50px 50px'
           }}></div>
         </div>
 
-        {/* Floating marketing icons */}
-        <div className="absolute inset-0">
-          {[TrendingUp, BarChart3, Target, Users, Zap].map((Icon, i) => (
-            <Icon
-              key={i}
-              className="absolute text-cyan-400/20 animate-float"
-              size={24}
-              style={{
-                left: `${20 + i * 15}%`,
-                top: `${20 + (i % 2) * 30}%`,
-                animationDelay: `${i * 2}s`,
-                animationDuration: `${6 + i}s`
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Data visualization elements */}
-        <div className="absolute inset-0">
-          {/* Chart lines */}
-          <svg className="absolute top-1/4 left-1/4 w-64 h-32 opacity-20">
-            <polyline
-              fill="none"
-              stroke="rgb(6, 182, 212)"
-              strokeWidth="2"
-              points="0,30 20,25 40,15 60,20 80,10 100,5 120,8 140,3 160,7 180,2 200,5 220,1 240,4 256,0"
-            />
-          </svg>
-          
-          <svg className="absolute bottom-1/4 right-1/4 w-64 h-32 opacity-20">
-            <polyline
-              fill="none"
-              stroke="rgb(34, 197, 94)"
-              strokeWidth="2"
-              points="0,25 20,20 40,30 60,15 80,25 100,10 120,20 140,8 160,18 180,5 200,15 220,3 240,12 256,2"
-            />
-          </svg>
-        </div>
-
-        {/* Floating data points */}
-        <div className="absolute inset-0">
-          {[...Array(15)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-2 h-2 bg-cyan-400/30 rounded-full animate-float"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 8}s`,
-                animationDuration: `${4 + Math.random() * 4}s`
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Glowing orbs with marketing colors - removed pulse animations */}
-        <div 
-          className="absolute w-96 h-96 rounded-full opacity-20 blur-3xl"
-          style={{
-            background: 'radial-gradient(circle, #06b6d4, #3b82f6)',
-            transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)`,
-            left: '10%',
-            top: '20%'
-          }}
-        />
-        
-        <div 
-          className="absolute w-80 h-80 rounded-full opacity-15 blur-3xl"
-          style={{
-            background: 'radial-gradient(circle, #10b981, #059669)',
-            transform: `translate(${mousePosition.x * -0.015}px, ${mousePosition.y * -0.015}px)`,
-            right: '15%',
-            bottom: '25%'
-          }}
-        />
+        {/* Animated lines */}
+        <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-cyan-400/20 to-transparent animate-pulse"></div>
+        <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-blue-400/10 to-transparent animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
+
+      {/* Radial gradient overlay */}
+      <div className="absolute inset-0 bg-radial-gradient from-transparent via-transparent to-black/50"></div>
 
       <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
         <div className="animate-fade-in">
@@ -156,6 +117,11 @@ const HeroSection = () => {
             Let's Work Together
             <ChevronDown className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={20} />
           </button>
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          
         </div>
       </div>
     </section>
