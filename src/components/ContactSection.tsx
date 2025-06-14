@@ -1,22 +1,10 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { Search, TrendingUp, Target, Brain, Palette, Settings, Mail, Linkedin } from 'lucide-react';
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const ContactSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-  const [formData, setFormData] = useState({
-    fullName: '',
-    contactNumber: '',
-    email: '',
-    organizationName: '',
-    message: ''
-  });
 
   const services = [
     {
@@ -74,29 +62,6 @@ const ContactSection = () => {
     return () => observer.disconnect();
   }, []);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Create mailto link with form data
-    const subject = `Inquiry from ${formData.fullName} - ${formData.organizationName}`;
-    const body = `
-Full Name: ${formData.fullName}
-Contact Number: ${formData.contactNumber}
-Email: ${formData.email}
-Organization: ${formData.organizationName}
-
-Message:
-${formData.message}
-    `.trim();
-    
-    const mailtoLink = `mailto:sanasravanth25@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailtoLink;
-  };
-
   return (
     <section id="contact" ref={sectionRef} className="py-20 bg-gray-900/50">
       <div className="max-w-7xl mx-auto px-6">
@@ -141,127 +106,35 @@ ${formData.message}
           })}
         </div>
 
-        {/* Contact Form and CTA */}
+        {/* Contact CTA Box */}
         <div className={`${isVisible ? 'animate-fade-in' : 'opacity-0'} transition-opacity duration-700 delay-1000`}>
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Contact Form */}
-            <Card className="bg-gray-800/50 border-gray-700 hover:border-cyan-400/50 transition-all duration-300">
-              <CardHeader>
-                <CardTitle className="text-2xl font-bold text-white">Send Inquiry</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div>
-                    <Label htmlFor="fullName" className="text-gray-300">Full Name *</Label>
-                    <Input
-                      id="fullName"
-                      name="fullName"
-                      value={formData.fullName}
-                      onChange={handleInputChange}
-                      required
-                      className="bg-gray-700/50 border-gray-600 text-white focus:border-cyan-400"
-                      placeholder="Enter your full name"
-                    />
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="contactNumber" className="text-gray-300">Contact Number *</Label>
-                    <Input
-                      id="contactNumber"
-                      name="contactNumber"
-                      type="tel"
-                      value={formData.contactNumber}
-                      onChange={handleInputChange}
-                      required
-                      className="bg-gray-700/50 border-gray-600 text-white focus:border-cyan-400"
-                      placeholder="Enter your contact number"
-                    />
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="email" className="text-gray-300">Email *</Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                      className="bg-gray-700/50 border-gray-600 text-white focus:border-cyan-400"
-                      placeholder="Enter your email"
-                    />
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="organizationName" className="text-gray-300">Organization Name *</Label>
-                    <Input
-                      id="organizationName"
-                      name="organizationName"
-                      value={formData.organizationName}
-                      onChange={handleInputChange}
-                      required
-                      className="bg-gray-700/50 border-gray-600 text-white focus:border-cyan-400"
-                      placeholder="Enter your organization name"
-                    />
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="message" className="text-gray-300">Message (Optional)</Label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      className="bg-gray-700/50 border-gray-600 text-white focus:border-cyan-400 min-h-[100px]"
-                      placeholder="Tell me about your project or requirements..."
-                    />
-                  </div>
-                  
-                  <Button 
-                    type="submit"
-                    className="w-full bg-cyan-400 hover:bg-cyan-300 text-black font-semibold py-3 transition-all duration-300 hover:scale-105"
-                  >
-                    <Mail className="mr-2" size={20} />
-                    Send Inquiry
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
-
-            {/* Contact Info */}
-            <div className="space-y-6">
-              <div className="bg-gradient-to-r from-cyan-400/10 to-purple-400/10 p-8 rounded-2xl border border-gray-700 hover:border-cyan-400/50 transition-all duration-300">
-                <h3 className="text-2xl font-bold text-white mb-4">Ready to grow your brand?</h3>
-                <p className="text-gray-300 mb-6">Let's discuss how we can take your digital presence to the next level.</p>
-                
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-3">
-                    <Mail className="text-cyan-400" size={20} />
-                    <span className="text-gray-300">sanasravanth25@gmail.com</span>
-                  </div>
-                  
-                  <a
-                    href="https://in.linkedin.com/in/sana-sravanth-3b084a231"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center space-x-3 text-gray-300 hover:text-cyan-400 transition-colors duration-300"
-                  >
-                    <Linkedin size={20} />
-                    <span>Connect on LinkedIn</span>
-                  </a>
-                </div>
-              </div>
+          <div className="bg-gradient-to-r from-cyan-400/10 to-purple-400/10 p-8 rounded-2xl border border-gray-700 hover:border-cyan-400/50 transition-all duration-300 text-center">
+            <h3 className="text-2xl font-bold text-white mb-4">Ready to grow your brand?</h3>
+            <p className="text-gray-300 mb-6">Let's discuss how we can take your digital presence to the next level.</p>
+            
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+              <a
+                href="mailto:sanasravanth25@gmail.com"
+                className="group inline-flex items-center px-6 py-3 bg-cyan-400 text-black font-semibold rounded-full hover:bg-cyan-300 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-400/25"
+              >
+                <Mail className="mr-2 group-hover:scale-110 transition-transform duration-300" size={20} />
+                Send Inquiry
+              </a>
               
-              <div className="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
-                <h4 className="text-lg font-bold text-white mb-3">Why Choose Me?</h4>
-                <ul className="space-y-2 text-gray-300">
-                  <li>• Data-driven marketing strategies</li>
-                  <li>• Proven ROI improvement</li>
-                  <li>• Custom solutions for your business</li>
-                  <li>• Fast turnaround times</li>
-                </ul>
-              </div>
+              <a
+                href="https://in.linkedin.com/in/sana-sravanth-3b084a231"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-6 py-3 bg-gray-800/50 text-white font-semibold rounded-full hover:bg-gray-700 transition-all duration-300 hover:scale-105 border border-gray-600 hover:border-cyan-400/50"
+              >
+                <Linkedin className="mr-2" size={20} />
+                LinkedIn
+              </a>
             </div>
+            
+            <p className="text-gray-400 mt-4 text-sm">
+              Email: <span className="text-cyan-400">sanasravanth25@gmail.com</span>
+            </p>
           </div>
         </div>
       </div>
