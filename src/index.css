@@ -124,6 +124,25 @@
     }
   }
 
+  @keyframes textCycle {
+    0%, 30% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    35%, 65% {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    70%, 100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-text-cycle {
+    animation: textCycle 2s ease-in-out infinite;
+  }
+
   /* Navigation link animations */
   .nav-link::after {
     content: "";
