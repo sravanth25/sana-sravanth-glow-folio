@@ -1,3 +1,4 @@
+
 import { ChevronDown } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
@@ -7,6 +8,7 @@ const HeroSection = () => {
     y: 0
   });
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
   const words = ['smarter', 'faster', 'louder'];
 
   useEffect(() => {
@@ -22,8 +24,12 @@ const HeroSection = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentWordIndex(prevIndex => (prevIndex + 1) % words.length);
-    }, 2000); // Change word every 2 seconds
+      setIsAnimating(true);
+      setTimeout(() => {
+        setCurrentWordIndex(prevIndex => (prevIndex + 1) % words.length);
+        setIsAnimating(false);
+      }, 300); // Half of the animation duration
+    }, 3000); // Change word every 3 seconds
 
     return () => clearInterval(interval);
   }, []);
@@ -57,9 +63,17 @@ const HeroSection = () => {
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight px-[8px] py-[10px] mx-[8px] my-[8px] text-center">
             I help brands grow{' '}
             <span className="text-cyan-400 relative inline-block">
-              <span key={currentWordIndex} className="animate-fade-in" style={{
-              animation: 'fadeIn 0.5s ease-in-out'
-            }}>
+              <span 
+                key={currentWordIndex} 
+                className={`inline-block transition-all duration-600 ${
+                  isAnimating 
+                    ? 'opacity-0 transform translate-y-4' 
+                    : 'opacity-1 transform translate-y-0'
+                }`}
+                style={{
+                  animation: isAnimating ? 'slideOut 0.6s ease-in-out' : 'slideIn 0.6s ease-in-out'
+                }}
+              >
                 {words[currentWordIndex]}
               </span>
               <div className="absolute -bottom-2 left-0 w-full h-1 bg-cyan-400/30 rounded"></div>
