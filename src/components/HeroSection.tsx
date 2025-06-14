@@ -1,5 +1,5 @@
 
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, TrendingUp, BarChart3, Target, Users, Zap } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 const HeroSection = () => {
@@ -40,99 +40,135 @@ const HeroSection = () => {
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Modern gradient background similar to Framer waitlist */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900/20 to-slate-900">
-        {/* Animated gradient orbs */}
-        <div className="absolute inset-0">
-          <div 
-            className="absolute w-96 h-96 rounded-full opacity-30 blur-3xl animate-pulse"
-            style={{
-              background: 'radial-gradient(circle, #8B5CF6, #3B82F6)',
-              left: '10%',
-              top: '20%',
-              animation: 'float 8s ease-in-out infinite',
-              transform: `translate(${mousePosition.x * 0.01}px, ${mousePosition.y * 0.01}px)`
-            }}
-          />
-          
-          <div 
-            className="absolute w-80 h-80 rounded-full opacity-20 blur-3xl animate-pulse"
-            style={{
-              background: 'radial-gradient(circle, #06B6D4, #8B5CF6)',
-              right: '10%',
-              top: '30%',
-              animation: 'float 6s ease-in-out infinite reverse',
-              animationDelay: '2s',
-              transform: `translate(${mousePosition.x * -0.01}px, ${mousePosition.y * -0.01}px)`
-            }}
-          />
-
-          <div 
-            className="absolute w-64 h-64 rounded-full opacity-25 blur-3xl animate-pulse"
-            style={{
-              background: 'radial-gradient(circle, #F59E0B, #EF4444)',
-              left: '60%',
-              bottom: '20%',
-              animation: 'float 10s ease-in-out infinite',
-              animationDelay: '4s',
-              transform: `translate(${mousePosition.x * 0.005}px, ${mousePosition.y * 0.005}px)`
-            }}
-          />
-        </div>
-
-        {/* Subtle grid pattern */}
-        <div className="absolute inset-0 opacity-5">
+      {/* Digital Marketing Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-black">
+        {/* Animated grid pattern */}
+        <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
             backgroundImage: `
-              linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px)
+              linear-gradient(rgba(6, 182, 212, 0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(6, 182, 212, 0.1) 1px, transparent 1px)
             `,
-            backgroundSize: '60px 60px',
+            backgroundSize: '50px 50px',
             animation: 'grid-move 20s linear infinite'
           }}></div>
         </div>
 
-        {/* Floating particles */}
+        {/* Floating marketing icons */}
         <div className="absolute inset-0">
-          {[...Array(20)].map((_, i) => (
-            <div
+          {[TrendingUp, BarChart3, Target, Users, Zap].map((Icon, i) => (
+            <Icon
               key={i}
-              className="absolute w-1 h-1 bg-white/20 rounded-full animate-float"
+              className="absolute text-cyan-400/20 animate-float"
+              size={24}
               style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 8}s`,
-                animationDuration: `${6 + Math.random() * 4}s`
+                left: `${20 + i * 15}%`,
+                top: `${20 + (i % 2) * 30}%`,
+                animationDelay: `${i * 2}s`,
+                animationDuration: `${6 + i}s`
               }}
             />
           ))}
         </div>
 
-        {/* Subtle light rays */}
+        {/* Data visualization elements */}
         <div className="absolute inset-0">
-          <div 
-            className="absolute w-px h-64 bg-gradient-to-b from-transparent via-white/10 to-transparent"
-            style={{
-              left: '20%',
-              top: '10%',
-              transform: 'rotate(15deg)',
-              animation: 'fade-in 3s ease-in-out infinite alternate'
-            }}
-          />
-          <div 
-            className="absolute w-px h-48 bg-gradient-to-b from-transparent via-purple-400/10 to-transparent"
-            style={{
-              right: '30%',
-              bottom: '20%',
-              transform: 'rotate(-20deg)',
-              animation: 'fade-in 4s ease-in-out infinite alternate',
-              animationDelay: '2s'
-            }}
-          />
+          {/* Chart lines */}
+          <svg className="absolute top-1/4 left-1/4 w-64 h-32 opacity-20">
+            <polyline
+              fill="none"
+              stroke="rgb(6, 182, 212)"
+              strokeWidth="2"
+              points="0,30 20,25 40,15 60,20 80,10 100,5 120,8 140,3 160,7 180,2 200,5 220,1 240,4 256,0"
+              className="animate-pulse"
+            />
+          </svg>
+          
+          <svg className="absolute bottom-1/4 right-1/4 w-64 h-32 opacity-20">
+            <polyline
+              fill="none"
+              stroke="rgb(34, 197, 94)"
+              strokeWidth="2"
+              points="0,25 20,20 40,30 60,15 80,25 100,10 120,20 140,8 160,18 180,5 200,15 220,3 240,12 256,2"
+              className="animate-pulse"
+              style={{ animationDelay: '1s' }}
+            />
+          </svg>
         </div>
 
-        {/* Gradient overlay for depth */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-black/10"></div>
+        {/* Floating data points */}
+        <div className="absolute inset-0">
+          {[...Array(15)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-2 h-2 bg-cyan-400/30 rounded-full animate-float"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 8}s`,
+                animationDuration: `${4 + Math.random() * 4}s`
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Glowing orbs with marketing colors */}
+        <div 
+          className="absolute w-96 h-96 rounded-full opacity-20 blur-3xl"
+          style={{
+            background: 'radial-gradient(circle, #06b6d4, #3b82f6)',
+            transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)`,
+            left: '10%',
+            top: '20%',
+            animation: 'pulse 6s ease-in-out infinite'
+          }}
+        />
+        
+        <div 
+          className="absolute w-80 h-80 rounded-full opacity-15 blur-3xl"
+          style={{
+            background: 'radial-gradient(circle, #10b981, #059669)',
+            transform: `translate(${mousePosition.x * -0.015}px, ${mousePosition.y * -0.015}px)`,
+            right: '15%',
+            bottom: '25%',
+            animation: 'pulse 8s ease-in-out infinite'
+          }}
+        />
+
+        {/* Performance metrics overlay */}
+        <div className="absolute top-10 right-10 opacity-20">
+          <div className="text-cyan-400 font-mono text-sm space-y-1">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+              <span>ROI: +247%</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+              <span>CTR: 12.4%</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
+              <span>Conv: 8.9%</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="absolute bottom-10 left-10 opacity-20">
+          <div className="text-cyan-400 font-mono text-sm space-y-1">
+            <div className="flex items-center gap-2">
+              <TrendingUp size={16} />
+              <span>Engagement ↗</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Target size={16} />
+              <span>Targeting Active</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Users size={16} />
+              <span>Audience: 2.4M</span>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
