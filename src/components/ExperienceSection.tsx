@@ -1,29 +1,21 @@
-
 import { useEffect, useRef, useState } from 'react';
-
 const ExperienceSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.3 }
-    );
-
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setIsVisible(true);
+      }
+    }, {
+      threshold: 0.3
+    });
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
-
     return () => observer.disconnect();
   }, []);
-
-  return (
-    <section id="experience" ref={sectionRef} className="py-20">
+  return <section id="experience" ref={sectionRef} className="py-20">
       <div className="max-w-7xl mx-auto px-6">
         <h2 className={`text-4xl md:text-5xl font-bold text-center mb-16 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
           <span className="text-cyan-400">Experience</span>
@@ -40,7 +32,7 @@ const ExperienceSection = () => {
                 <div className="ml-12 md:ml-0 md:text-right">
                   <h3 className="text-2xl font-bold text-white mb-2">Digital Marketing Executive</h3>
                   <p className="text-cyan-400 font-semibold mb-4">JaaGa.AI</p>
-                  <p className="text-gray-400 text-sm mb-4">2023 - Present</p>
+                  <p className="text-gray-400 text-sm mb-4">2024 - Present</p>
                 </div>
               </div>
 
@@ -66,10 +58,7 @@ const ExperienceSection = () => {
                       <div className="w-1.5 h-1.5 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
                       <span>Executed high-performing Meta and Google Ads campaigns achieving 3.2x ROAS across multiple clients</span>
                     </li>
-                    <li className="flex items-start space-x-2">
-                      <div className="w-1.5 h-1.5 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
-                      <span>Built comprehensive Looker Studio dashboards for real-time campaign performance tracking</span>
-                    </li>
+                    
                   </ul>
                 </div>
               </div>
@@ -77,8 +66,6 @@ const ExperienceSection = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default ExperienceSection;
