@@ -40,57 +40,47 @@ const HeroSection = () => {
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Dynamic Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black">
-        <div className="absolute inset-0 bg-gradient-to-tr from-cyan-900/20 via-transparent to-blue-900/20"></div>
-      </div>
-
-      {/* Animated Geometric Shapes */}
-      <div className="absolute inset-0">
-        {/* Large floating circles */}
-        <div 
-          className="absolute w-96 h-96 bg-gradient-to-r from-cyan-400/10 to-blue-500/10 rounded-full blur-3xl animate-pulse"
-          style={{
-            transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)`,
-            left: '10%',
-            top: '20%',
-            animationDuration: '4s'
-          }}
-        />
-        <div 
-          className="absolute w-64 h-64 bg-gradient-to-r from-purple-400/5 to-cyan-400/5 rounded-full blur-2xl animate-pulse"
-          style={{
-            transform: `translate(${mousePosition.x * -0.01}px, ${mousePosition.y * -0.01}px)`,
-            right: '10%',
-            bottom: '20%',
-            animationDuration: '6s'
-          }}
-        />
-
-        {/* Floating geometric elements */}
-        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-cyan-400/30 rotate-45 animate-bounce" style={{ animationDelay: '0s' }}></div>
-        <div className="absolute top-1/3 right-1/3 w-3 h-3 bg-blue-400/20 rounded-full animate-bounce" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute bottom-1/4 left-1/3 w-1 h-8 bg-cyan-300/20 animate-pulse" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute top-2/3 right-1/4 w-4 h-1 bg-purple-400/20 animate-pulse" style={{ animationDelay: '3s' }}></div>
-
-        {/* Grid overlay */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="h-full w-full" style={{
-            backgroundImage: `
-              linear-gradient(rgba(34, 211, 238, 0.1) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(34, 211, 238, 0.1) 1px, transparent 1px)
-            `,
-            backgroundSize: '50px 50px'
-          }}></div>
+      {/* Circular Gradient Background */}
+      <div className="absolute inset-0 bg-black">
+        {/* Main circular gradient */}
+        <div className="absolute inset-0 bg-gradient-radial from-purple-600/30 via-blue-600/20 to-transparent" 
+             style={{
+               background: `radial-gradient(circle at center, 
+                 rgba(147, 51, 234, 0.4) 0%,
+                 rgba(59, 130, 246, 0.3) 25%,
+                 rgba(139, 92, 246, 0.2) 50%,
+                 rgba(0, 0, 0, 0.8) 70%,
+                 rgba(0, 0, 0, 1) 100%)`
+             }}>
         </div>
-
-        {/* Animated lines */}
-        <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-cyan-400/20 to-transparent animate-pulse"></div>
-        <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-blue-400/10 to-transparent animate-pulse" style={{ animationDelay: '2s' }}></div>
+        
+        {/* Secondary circular overlay for depth */}
+        <div className="absolute inset-0"
+             style={{
+               background: `radial-gradient(circle at 60% 40%, 
+                 rgba(168, 85, 247, 0.15) 0%,
+                 transparent 50%)`
+             }}>
+        </div>
+        
+        {/* Third circular overlay */}
+        <div className="absolute inset-0"
+             style={{
+               background: `radial-gradient(circle at 30% 70%, 
+                 rgba(59, 130, 246, 0.1) 0%,
+                 transparent 40%)`
+             }}>
+        </div>
       </div>
 
-      {/* Radial gradient overlay */}
-      <div className="absolute inset-0 bg-radial-gradient from-transparent via-transparent to-black/50"></div>
+      {/* Subtle animated elements */}
+      <div className="absolute inset-0">
+        {/* Floating dots */}
+        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-purple-400/20 rounded-full"></div>
+        <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-blue-400/30 rounded-full"></div>
+        <div className="absolute bottom-1/4 left-1/3 w-1.5 h-1.5 bg-purple-300/15 rounded-full"></div>
+        <div className="absolute top-2/3 right-1/4 w-1 h-1 bg-blue-300/25 rounded-full"></div>
+      </div>
 
       <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
         <div className="animate-fade-in">
