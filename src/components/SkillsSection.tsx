@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react';
 
 const SkillsSection = () => {
@@ -12,12 +11,11 @@ const SkillsSection = () => {
     { name: 'SEO', level: 88 },
     { name: 'Figma', level: 82 },
     { name: 'SEMrush', level: 80 },
-    { name: 'Email Marketing', level: 85 },
   ];
 
   const tools = [
     'Google Ads', 'Meta Ads', 'SEMrush', 'Canva', 'Figma',
-    'Email Marketing', 'WhatsApp Automation', 'Landing Page Optimization'
+    'WhatsApp Automation (Meta Cloud API & WooSms)'
   ];
 
   useEffect(() => {
