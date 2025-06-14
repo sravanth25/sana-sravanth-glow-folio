@@ -1,5 +1,6 @@
 import { ChevronDown } from 'lucide-react';
 import { useEffect, useState } from 'react';
+
 const HeroSection = () => {
   const [mousePosition, setMousePosition] = useState({
     x: 0,
@@ -7,6 +8,7 @@ const HeroSection = () => {
   });
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const words = ['smarter', 'faster', 'louder'];
+
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({
@@ -17,6 +19,7 @@ const HeroSection = () => {
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentWordIndex(prevIndex => (prevIndex + 1) % words.length);
@@ -24,6 +27,7 @@ const HeroSection = () => {
 
     return () => clearInterval(interval);
   }, []);
+
   const scrollToContact = () => {
     const element = document.getElementById('contact');
     if (element) {
@@ -32,6 +36,7 @@ const HeroSection = () => {
       });
     }
   };
+
   return <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0">
@@ -59,9 +64,6 @@ const HeroSection = () => {
               </span>
               <div className="absolute -bottom-2 left-0 w-full h-1 bg-cyan-400/30 rounded"></div>
             </span>
-            ,{' '}
-            , and{' '}
-            <span className="text-cyan-400"></span>.
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
@@ -81,4 +83,5 @@ const HeroSection = () => {
       </div>
     </section>;
 };
+
 export default HeroSection;
