@@ -149,6 +149,15 @@
     }
   }
 
+  @keyframes grid-move {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(50px, 50px);
+    }
+  }
+
   .animate-text-cycle {
     animation: textCycle 2s ease-in-out infinite;
   }
