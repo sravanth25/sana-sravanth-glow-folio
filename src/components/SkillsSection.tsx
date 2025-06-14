@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState } from 'react';
 
 const SkillsSection = () => {
@@ -94,7 +95,7 @@ const SkillsSection = () => {
                   style={{
                     animationDelay: `${index * 100}ms`
                   }} 
-                  className={`bg-gray-800/50 p-4 ${tool === 'Figma' ? 'text-center' : 'text-center'} hover:bg-gray-800/70 hover:scale-105 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-cyan-400/50 rounded-md mx-[4px] my-0`}
+                  className="bg-gray-800/50 p-4 text-center hover:bg-gray-800/70 hover:scale-105 transition-all duration-300 cursor-pointer border border-gray-700 hover:border-cyan-400/50 rounded-md mx-[4px] my-0 flex items-center justify-center min-h-[60px]"
                 >
                   <span className="text-white font-medium">{tool}</span>
                 </div>
