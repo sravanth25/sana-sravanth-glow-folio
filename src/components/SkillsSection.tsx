@@ -16,7 +16,7 @@ const SkillsSection = () => {
   ];
 
   const tools = [
-    'Google Ads', 'Meta Ads', 'SEMrush', 'Canva', 'Looker Studio',
+    'Google Ads', 'Meta Ads', 'SEMrush', 'Canva', 'Figma',
     'Email Marketing', 'WhatsApp Automation', 'Landing Page Optimization'
   ];
 
