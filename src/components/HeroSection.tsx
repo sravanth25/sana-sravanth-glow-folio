@@ -157,6 +157,13 @@ const HeroSection = () => {
             }}
           />
           
+          {/* Hide Spline branding */}
+          <style jsx>{`
+            spline-viewer::part(logo) {
+              display: none !important;
+            }
+          `}</style>
+          
           {/* Overlay gradient for better text readability */}
           <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-black/20 pointer-events-none rounded-lg"></div>
         </div>
