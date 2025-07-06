@@ -101,7 +101,7 @@ const HeroSection = () => {
 
       <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
         {/* Left Content */}
-        <div className="animate-fade-in text-left">
+        <div className="animate-fade-in text-center lg:text-left">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
             I help brands grow{' '}
             <span className="text-cyan-400 relative inline-block">
@@ -114,11 +114,11 @@ const HeroSection = () => {
             </span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl">
+          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0">
             Digital Marketing Executive crafting data-first growth strategies that deliver real results
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
             <button 
               onClick={scrollToContact} 
               className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-semibold rounded-full hover:from-cyan-300 hover:to-blue-400 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/25 transform"
