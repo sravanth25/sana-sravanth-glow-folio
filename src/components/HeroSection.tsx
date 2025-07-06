@@ -1,6 +1,6 @@
-
 import { ChevronDown, TrendingUp, Target, BarChart, Users, Globe, Mail, Search, Zap, Award, Eye } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
   const [mousePosition, setMousePosition] = useState({
@@ -31,15 +31,6 @@ const HeroSection = () => {
 
   const scrollToContact = () => {
     const element = document.getElementById('contact');
-    if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth'
-      });
-    }
-  };
-
-  const scrollToExperience = () => {
-    const element = document.getElementById('experience');
     if (element) {
       element.scrollIntoView({
         behavior: 'smooth'
@@ -168,13 +159,13 @@ const HeroSection = () => {
               <ChevronDown className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={20} />
             </button>
             
-            <button 
-              onClick={scrollToExperience} 
+            <Link 
+              to="/work"
               className="group inline-flex items-center px-8 py-4 bg-transparent border-2 border-cyan-400 text-cyan-400 font-semibold rounded-full hover:bg-cyan-400 hover:text-black transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/25 transform"
             >
               View My Work
               <Eye className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={20} />
-            </button>
+            </Link>
           </div>
         </div>
 
