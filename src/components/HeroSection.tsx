@@ -1,19 +1,6 @@
 
-import { ChevronDown, ArrowRight } from 'lucide-react';
+import { ChevronDown, TrendingUp, Target, BarChart, Users, Globe, Mail, Search, Zap, Award } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-
-// Declare the custom spline-viewer element for TypeScript
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'spline-viewer': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
-        url?: string;
-        style?: React.CSSProperties;
-      };
-    }
-  }
-}
 
 const HeroSection = () => {
   const [mousePosition, setMousePosition] = useState({
@@ -58,7 +45,7 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-gradient-to-tr from-cyan-900/20 via-transparent to-blue-900/20"></div>
       </div>
 
-      {/* Animated Background Elements */}
+      {/* Animated Geometric Shapes */}
       <div className="absolute inset-0">
         {/* Large floating circles */}
         <div 
@@ -80,6 +67,52 @@ const HeroSection = () => {
           }}
         />
 
+        {/* Digital Marketing Icons - Floating Background Elements */}
+        <div className="absolute top-20 left-20 text-cyan-400/20 animate-pulse" style={{ animationDelay: '0s' }}>
+          <TrendingUp size={32} />
+        </div>
+        <div className="absolute top-32 right-32 text-blue-400/20 animate-bounce" style={{ animationDelay: '1s' }}>
+          <Target size={28} />
+        </div>
+        <div className="absolute bottom-40 left-40 text-cyan-300/20 animate-pulse" style={{ animationDelay: '2s' }}>
+          <BarChart size={24} />
+        </div>
+        <div className="absolute top-1/2 right-20 text-purple-400/20 animate-bounce" style={{ animationDelay: '3s' }}>
+          <Users size={26} />
+        </div>
+        <div className="absolute bottom-1/3 right-1/4 text-cyan-400/20 animate-pulse" style={{ animationDelay: '4s' }}>
+          <Globe size={30} />
+        </div>
+        <div className="absolute top-1/4 left-1/3 text-blue-400/20 animate-bounce" style={{ animationDelay: '5s' }}>
+          <Mail size={22} />
+        </div>
+        <div className="absolute bottom-20 right-1/3 text-cyan-300/20 animate-pulse" style={{ animationDelay: '6s' }}>
+          <Search size={25} />
+        </div>
+        <div className="absolute top-2/3 left-1/4 text-purple-400/20 animate-bounce" style={{ animationDelay: '7s' }}>
+          <Zap size={20} />
+        </div>
+        <div className="absolute top-1/3 right-1/2 text-cyan-400/20 animate-pulse" style={{ animationDelay: '8s' }}>
+          <Award size={24} />
+        </div>
+
+        {/* Additional smaller marketing icons */}
+        <div className="absolute top-1/6 left-1/2 text-blue-400/20 animate-bounce" style={{ animationDelay: '2.5s' }}>
+          <TrendingUp size={18} />
+        </div>
+        <div className="absolute bottom-1/4 left-1/6 text-cyan-300/20 animate-pulse" style={{ animationDelay: '3.5s' }}>
+          <Target size={16} />
+        </div>
+        <div className="absolute top-3/4 right-1/6 text-purple-400/20 animate-bounce" style={{ animationDelay: '4.5s' }}>
+          <BarChart size={20} />
+        </div>
+
+        {/* Original floating geometric elements */}
+        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-cyan-400/30 rotate-45 animate-bounce" style={{ animationDelay: '0s' }}></div>
+        <div className="absolute top-1/3 right-1/3 w-3 h-3 bg-blue-400/20 rounded-full animate-bounce" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute bottom-1/4 left-1/3 w-1 h-8 bg-cyan-300/20 animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-2/3 right-1/4 w-4 h-1 bg-purple-400/20 animate-pulse" style={{ animationDelay: '3s' }}></div>
+
         {/* Grid overlay */}
         <div className="absolute inset-0 opacity-5">
           <div className="h-full w-full" style={{
@@ -99,9 +132,8 @@ const HeroSection = () => {
       {/* Radial gradient overlay */}
       <div className="absolute inset-0 bg-radial-gradient from-transparent via-transparent to-black/50"></div>
 
-      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
-        {/* Left Content */}
-        <div className="animate-fade-in text-center">
+      <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
+        <div className="animate-fade-in">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
             I help brands grow{' '}
             <span className="text-cyan-400 relative inline-block">
@@ -114,53 +146,22 @@ const HeroSection = () => {
             </span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
             Digital Marketing Executive crafting data-first growth strategies that deliver real results
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button 
-              onClick={scrollToContact} 
-              className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-semibold rounded-full hover:from-cyan-300 hover:to-blue-400 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/25 transform"
-            >
-              Let's Work Together
-              <ChevronDown className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={20} />
-            </button>
-
-            <Link 
-              to="/work"
-              className="group inline-flex items-center px-8 py-4 bg-transparent border-2 border-cyan-400 text-cyan-400 font-semibold rounded-full hover:bg-cyan-400 hover:text-black transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/25 transform"
-            >
-              View My Work
-              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={20} />
-            </Link>
-          </div>
+          <button 
+            onClick={scrollToContact} 
+            className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-semibold rounded-full hover:from-cyan-300 hover:to-blue-400 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/25 transform"
+          >
+            Let's Work Together
+            <ChevronDown className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={20} />
+          </button>
         </div>
 
-        {/* Right Content - 3D Model */}
-        <div className="flex justify-center lg:justify-end">
-          <div className="w-full max-w-lg h-[500px] relative">
-            <spline-viewer 
-              url="https://prod.spline.design/ADKI36hrAyh2PJ5a/scene.splinecode"
-              style={{
-                width: '100%',
-                height: '100%',
-                background: 'transparent'
-              }}
-            />
-            <style>
-              {`
-                spline-viewer {
-                  --spline-viewer-controls: none;
-                }
-                spline-viewer::part(branding) {
-                  display: none !important;
-                  opacity: 0 !important;
-                  visibility: hidden !important;
-                }
-              `}
-            </style>
-          </div>
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          
         </div>
       </div>
     </section>

@@ -1,42 +1,26 @@
 
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import { Link, useLocation } from 'react-router-dom';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const location = useLocation();
 
   const navItems = [{
     id: 'home',
-    label: 'Home',
-    type: 'scroll'
+    label: 'Home'
   }, {
     id: 'about',
-    label: 'About',
-    type: 'scroll'
+    label: 'About'
   }, {
     id: 'experience',
-    label: 'Experience',
-    type: 'scroll'
-  }, {
-    id: 'work',
-    label: 'Work',
-    type: 'route',
-    path: '/work'
+    label: 'Experience'
   }, {
     id: 'contact',
-    label: 'Hire Me',
-    type: 'scroll'
+    label: 'Hire Me'
   }];
 
   useEffect(() => {
-    if (location.pathname === '/work') {
-      setActiveSection('work');
-      return;
-    }
-
     const handleScroll = () => {
       const sections = ['home', 'about', 'experience', 'contact'];
       const scrollY = window.scrollY + 100;
@@ -55,7 +39,7 @@ const Navigation = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [location.pathname]);
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -65,50 +49,29 @@ const Navigation = () => {
     setIsMenuOpen(false);
   };
 
-  const handleNavClick = (item: typeof navItems[0]) => {
-    if (item.type === 'route' && item.path) {
-      setIsMenuOpen(false);
-      // Navigation will be handled by Link component
-    } else {
-      scrollToSection(item.id);
-    }
-  };
-
   return (
     <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 bg-black/90 backdrop-blur-md border border-gray-800 rounded-full px-6 py-3">
       <div className="flex items-center justify-between">
         {/* Logo */}
-        <Link
-          to="/"
+        <div
+          onClick={() => scrollToSection('home')}
           className="text-xl font-bold text-cyan-400 cursor-pointer hover:text-cyan-300 transition-colors duration-300 mr-8"
         >
           Sana Sravanth
-        </Link>
+        </div>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-6">
           {navItems.map(item => (
-            item.type === 'route' ? (
-              <Link
-                key={item.id}
-                to={item.path!}
-                className={`nav-link relative text-white hover:text-cyan-400 transition-colors duration-300 px-4 py-2 rounded-full ${
-                  activeSection === item.id ? 'active bg-cyan-400/20' : 'hover:bg-gray-800/50'
-                }`}
-              >
-                {item.label}
-              </Link>
-            ) : (
-              <button
-                key={item.id}
-                onClick={() => handleNavClick(item)}
-                className={`nav-link relative text-white hover:text-cyan-400 transition-colors duration-300 px-4 py-2 rounded-full ${
-                  activeSection === item.id ? 'active bg-cyan-400/20' : 'hover:bg-gray-800/50'
-                }`}
-              >
-                {item.label}
-              </button>
-            )
+            <button
+              key={item.id}
+              onClick={() => scrollToSection(item.id)}
+              className={`nav-link relative text-white hover:text-cyan-400 transition-colors duration-300 px-4 py-2 rounded-full ${
+                activeSection === item.id ? 'active bg-cyan-400/20' : 'hover:bg-gray-800/50'
+              }`}
+            >
+              {item.label}
+            </button>
           ))}
         </div>
 
@@ -126,26 +89,14 @@ const Navigation = () => {
         <div className="md:hidden absolute top-full left-0 right-0 mt-2 bg-black/95 backdrop-blur-md border border-gray-800 rounded-2xl animate-fade-in">
           <div className="px-4 py-4 space-y-2">
             {navItems.map((item, index) => (
-              item.type === 'route' ? (
-                <Link
-                  key={item.id}
-                  to={item.path!}
-                  onClick={() => setIsMenuOpen(false)}
-                  className="block w-full text-left text-white hover:text-cyan-400 transition-colors duration-300 py-3 px-4 rounded-full hover:bg-gray-800/50"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  {item.label}
-                </Link>
-              ) : (
-                <button
-                  key={item.id}
-                  onClick={() => handleNavClick(item)}
-                  className="block w-full text-left text-white hover:text-cyan-400 transition-colors duration-300 py-3 px-4 rounded-full hover:bg-gray-800/50"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  {item.label}
-                </button>
-              )
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className="block w-full text-left text-white hover:text-cyan-400 transition-colors duration-300 py-3 px-4 rounded-full hover:bg-gray-800/50"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                {item.label}
+              </button>
             ))}
           </div>
         </div>
