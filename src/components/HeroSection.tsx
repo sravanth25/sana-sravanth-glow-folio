@@ -1,6 +1,19 @@
-import { ChevronDown, TrendingUp, Target, BarChart, Users, Globe, Mail, Search, Zap, Award, ArrowRight } from 'lucide-react';
+
+import { ChevronDown, ArrowRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+
+// Declare the custom spline-viewer element for TypeScript
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'spline-viewer': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+        url?: string;
+        style?: React.CSSProperties;
+      };
+    }
+  }
+}
 
 const HeroSection = () => {
   const [mousePosition, setMousePosition] = useState({
@@ -45,7 +58,7 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-gradient-to-tr from-cyan-900/20 via-transparent to-blue-900/20"></div>
       </div>
 
-      {/* Animated Geometric Shapes */}
+      {/* Animated Background Elements */}
       <div className="absolute inset-0">
         {/* Large floating circles */}
         <div 
@@ -135,16 +148,18 @@ const HeroSection = () => {
                 background: 'transparent'
               }}
             />
-            <style jsx>{`
-              spline-viewer {
-                --spline-viewer-controls: none;
-              }
-              spline-viewer::part(branding) {
-                display: none !important;
-                opacity: 0 !important;
-                visibility: hidden !important;
-              }
-            `}</style>
+            <style>
+              {`
+                spline-viewer {
+                  --spline-viewer-controls: none;
+                }
+                spline-viewer::part(branding) {
+                  display: none !important;
+                  opacity: 0 !important;
+                  visibility: hidden !important;
+                }
+              `}
+            </style>
           </div>
         </div>
       </div>
