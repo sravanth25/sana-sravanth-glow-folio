@@ -1,17 +1,21 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { Search, TrendingUp, Target, Brain, Palette, Settings, Mail, Linkedin } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const ContactSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const navigate = useNavigate();
 
   const services = [
     {
       icon: Search,
       title: 'SEO Optimization',
       description: 'Drive organic growth with search-first strategies, on-page optimization, and keyword-rich content that ranks.',
-      color: 'from-cyan-400 to-blue-500'
+      color: 'from-cyan-400 to-blue-500',
+      isClickable: true,
+      path: '/seo-guide'
     },
     {
       icon: TrendingUp,
@@ -62,6 +66,12 @@ const ContactSection = () => {
     return () => observer.disconnect();
   }, []);
 
+  const handleServiceClick = (service: typeof services[0]) => {
+    if (service.isClickable && service.path) {
+      navigate(service.path);
+    }
+  };
+
   return (
     <section id="contact" ref={sectionRef} className="py-20 bg-gray-900/50">
       <div className="max-w-7xl mx-auto px-6">
@@ -86,7 +96,12 @@ const ContactSection = () => {
                 className={`${isVisible ? 'animate-fade-in' : 'opacity-0'} transition-opacity duration-700`}
                 style={{ transitionDelay: `${index * 150 + 300}ms` }}
               >
-                <div className="group bg-gray-800/50 p-6 rounded-xl hover:bg-gray-800/70 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-400/10 border border-gray-700 hover:border-cyan-400/50 h-full">
+                <div 
+                  className={`group bg-gray-800/50 p-6 rounded-xl hover:bg-gray-800/70 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-400/10 border border-gray-700 hover:border-cyan-400/50 h-full ${
+                    service.isClickable ? 'cursor-pointer' : ''
+                  }`}
+                  onClick={() => handleServiceClick(service)}
+                >
                   <div className="flex items-start space-x-4">
                     <div className={`p-3 rounded-full bg-gradient-to-r ${service.color} group-hover:scale-110 transition-transform duration-300 flex-shrink-0`}>
                       <IconComponent className="text-black" size={24} />
@@ -94,6 +109,7 @@ const ContactSection = () => {
                     <div className="flex-1">
                       <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors duration-300">
                         {service.title}
+                        {service.isClickable && <span className="text-sm text-cyan-400 ml-2">→ Learn More</span>}
                       </h3>
                       <p className="text-gray-300 leading-relaxed">
                         {service.description}
