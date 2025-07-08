@@ -1,18 +1,32 @@
 
 import { useState } from 'react';
-import { ArrowLeft, TrendingUp, Target, DollarSign, Users, ShoppingCart, Instagram, Globe, Mail, Phone, Building, MessageSquare, Eye, BarChart3, Zap, Award } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { ArrowLeft, TrendingUp, Target, DollarSign, Users, ShoppingCart, Instagram, Globe, Mail, Phone, Building, MessageSquare, Eye, BarChart3, Zap, Award, CheckCircle } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
 
 const MetaGoogleAds = () => {
-  const [isInquiryOpen, setIsInquiryOpen] = useState(false);
+  const navigate = useNavigate();
+  const [showInquiry, setShowInquiry] = useState(false);
+
+  const digitalMarketingTypes = [
+    {
+      title: "Search Engine Marketing (SEM)",
+      description: "Paid advertising on search engines to capture high-intent traffic when users search for your products or services",
+      examples: ["Google Ads search campaigns", "Bing Ads", "Shopping campaigns", "Local service ads", "Performance Max campaigns"]
+    },
+    {
+      title: "Social Media Advertising",
+      description: "Targeted advertising across social platforms to reach specific demographics and interests",
+      examples: ["Facebook & Instagram ads", "LinkedIn sponsored content", "Twitter ads", "TikTok advertising", "YouTube ads"]
+    },
+    {
+      title: "Display & Remarketing",
+      description: "Visual banner advertising and retargeting campaigns to re-engage website visitors",
+      examples: ["Google Display Network", "Facebook remarketing", "Dynamic product ads", "Lookalike audiences", "Video remarketing"]
+    }
+  ];
 
   const campaignResults = [
     {
@@ -109,56 +123,81 @@ const MetaGoogleAds = () => {
     ]
   };
 
-  return (
-    <div className="min-h-screen bg-black text-white">
-      {/* Header */}
-      <div className="sticky top-0 z-50 bg-black/90 backdrop-blur-md border-b border-gray-800">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-3 text-cyan-400 hover:text-cyan-300 transition-colors">
-            <ArrowLeft size={20} />
-            <span>Back to Home</span>
-          </Link>
-          <div className="text-xl font-bold text-cyan-400">Meta & Google Ads Mastery</div>
-        </div>
-      </div>
+  const benefits = [
+    "Immediate traffic and lead generation",
+    "Precise audience targeting and segmentation",
+    "Measurable ROI and performance tracking",
+    "Scalable budget management",
+    "Brand awareness and visibility boost",
+    "Competitive advantage in digital space"
+  ];
 
-      {/* Hero Section */}
-      <section className="py-20 px-6">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Meta & Google <span className="text-cyan-400">Ads Expertise</span>
-          </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-            Drive qualified traffic, generate leads, and boost sales with data-driven advertising campaigns 
-            that deliver measurable ROI across Meta and Google platforms.
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
-            <div className="text-center">
-              <div className="text-2xl font-bold text-cyan-400">200%+</div>
-              <div className="text-gray-400">Average ROAS</div>
+  return (
+    <div className="min-h-screen bg-gray-900 text-white">
+      {/* Header */}
+      <div className="bg-gray-800 border-b border-gray-700">
+        <div className="max-w-7xl mx-auto px-6 py-4">
+          <button
+            onClick={() => navigate('/')}
+            className="inline-flex items-center text-cyan-400 hover:text-cyan-300 transition-colors duration-300 mb-4"
+          >
+            <ArrowLeft className="mr-2" size={20} />
+            Back to Home
+          </button>
+          
+          <div className="flex items-center space-x-4">
+            <div className="p-3 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full">
+              <Target className="text-black" size={32} />
             </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-cyan-400">₹3.55</div>
-              <div className="text-gray-400">Avg CPC</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-cyan-400">47K+</div>
-              <div className="text-gray-400">Impressions</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-cyan-400">231</div>
-              <div className="text-gray-400">Conversions</div>
+            <div>
+              <h1 className="text-4xl font-bold">Digital Marketing & Advertising Guide</h1>
+              <p className="text-gray-300 text-lg">Master the art of digital advertising with Meta & Google Ads</p>
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* Platform Features */}
-      <section className="py-20 px-6 bg-gray-900/30">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-            Platform <span className="text-cyan-400">Expertise</span>
-          </h2>
+      <div className="max-w-7xl mx-auto px-6 py-12">
+        {/* Introduction */}
+        <section className="mb-16">
+          <h2 className="text-3xl font-bold mb-6 text-cyan-400">What is Digital Marketing?</h2>
+          <div className="bg-gray-800/50 p-8 rounded-xl border border-gray-700">
+            <p className="text-lg text-gray-300 leading-relaxed mb-6">
+              Digital marketing is the practice of promoting products, services, or brands through digital channels 
+              and platforms. It encompasses various online strategies including paid advertising, social media marketing, 
+              email campaigns, and content marketing to reach and engage target audiences.
+            </p>
+            <p className="text-lg text-gray-300 leading-relaxed">
+              With the power of data-driven insights and precise targeting, digital marketing allows businesses to 
+              reach the right people at the right time with the right message, maximizing ROI and driving sustainable growth.
+            </p>
+          </div>
+        </section>
+
+        {/* Types of Digital Marketing */}
+        <section className="mb-16">
+          <h2 className="text-3xl font-bold mb-8 text-cyan-400">Types of Digital Marketing</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {digitalMarketingTypes.map((type, index) => (
+              <div key={index} className="bg-gray-800/50 p-6 rounded-xl border border-gray-700 hover:border-cyan-400/50 transition-all duration-300">
+                <h3 className="text-xl font-bold text-white mb-4">{type.title}</h3>
+                <p className="text-gray-300 mb-6">{type.description}</p>
+                <ul className="space-y-2">
+                  {type.examples.map((example, idx) => (
+                    <li key={idx} className="flex items-center text-sm text-gray-400">
+                      <CheckCircle className="mr-2 text-cyan-400" size={16} />
+                      {example}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Platform Features */}
+        <section className="mb-16">
+          <h2 className="text-3xl font-bold mb-8 text-cyan-400">Platform Expertise</h2>
           
           <Tabs defaultValue="meta" className="w-full">
             <TabsList className="grid w-full grid-cols-2 bg-gray-800/50 mb-8">
@@ -244,16 +283,12 @@ const MetaGoogleAds = () => {
               </div>
             </TabsContent>
           </Tabs>
-        </div>
-      </section>
+        </section>
 
-      {/* Campaign Results */}
-      <section className="py-20 px-6">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
-            Real Campaign <span className="text-cyan-400">Results</span>
-          </h2>
-          <p className="text-xl text-gray-300 text-center mb-12 max-w-3xl mx-auto">
+        {/* Campaign Results */}
+        <section className="mb-16">
+          <h2 className="text-3xl font-bold mb-4 text-cyan-400">Real Campaign Results</h2>
+          <p className="text-xl text-gray-300 mb-12 max-w-3xl">
             See how I've helped businesses across industries achieve exceptional ROI with targeted advertising campaigns.
           </p>
 
@@ -326,15 +361,11 @@ const MetaGoogleAds = () => {
               </Card>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Strategy Section */}
-      <section className="py-20 px-6 bg-gray-900/30">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-            My Advertising <span className="text-cyan-400">Strategy</span>
-          </h2>
+        {/* Strategy Section */}
+        <section className="mb-16">
+          <h2 className="text-3xl font-bold mb-12 text-cyan-400">My Advertising Strategy</h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {adStrategies.map((strategy, index) => {
@@ -362,74 +393,119 @@ const MetaGoogleAds = () => {
               );
             })}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA Section */}
-      <section className="py-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Ready to Scale Your <span className="text-cyan-400">Business</span>?
-          </h2>
-          <p className="text-xl text-gray-300 mb-8">
-            Let's create high-converting ad campaigns that drive real results for your business. 
-            Get a free consultation and strategy session.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Dialog open={isInquiryOpen} onOpenChange={setIsInquiryOpen}>
-              <DialogTrigger asChild>
-                <Button className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-semibold rounded-full hover:from-cyan-300 hover:to-blue-400 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/25">
-                  Get Free Strategy Session
-                  <Target className="ml-2" size={20} />
-                </Button>
-              </DialogTrigger>
-              <DialogContent className="sm:max-w-md bg-gray-900 border-gray-800">
-                <DialogHeader>
-                  <DialogTitle className="text-white">Request Strategy Session</DialogTitle>
-                  <DialogDescription className="text-gray-300">
-                    Fill out the form below and I'll get back to you within 24 hours with a custom strategy for your business.
-                  </DialogDescription>
-                </DialogHeader>
-                <form className="space-y-4">
-                  <div>
-                    <Label htmlFor="fullName" className="text-white">Full Name *</Label>
-                    <Input id="fullName" className="bg-gray-800 border-gray-700 text-white" placeholder="Your full name" />
-                  </div>
-                  <div>
-                    <Label htmlFor="email" className="text-white">Email *</Label>
-                    <Input id="email" type="email" className="bg-gray-800 border-gray-700 text-white" placeholder="your@email.com" />
-                  </div>
-                  <div>
-                    <Label htmlFor="phone" className="text-white">Phone Number *</Label>
-                    <Input id="phone" className="bg-gray-800 border-gray-700 text-white" placeholder="+91 12345 67890" />
-                  </div>
-                  <div>
-                    <Label htmlFor="organization" className="text-white">Organization</Label>
-                    <Input id="organization" className="bg-gray-800 border-gray-700 text-white" placeholder="Your company name" />
-                  </div>
-                  <div>
-                    <Label htmlFor="budget" className="text-white">Monthly Ad Budget</Label>
-                    <Input id="budget" className="bg-gray-800 border-gray-700 text-white" placeholder="₹50,000" />
-                  </div>
-                  <div>
-                    <Label htmlFor="details" className="text-white">Project Details *</Label>
-                    <Textarea id="details" className="bg-gray-800 border-gray-700 text-white" placeholder="Tell me about your business goals, target audience, and what you're looking to achieve with advertising..." />
-                  </div>
-                  <Button type="submit" className="w-full bg-cyan-400 hover:bg-cyan-300 text-black font-semibold">
-                    Send Inquiry
-                  </Button>
-                </form>
-              </DialogContent>
-            </Dialog>
+        {/* Benefits */}
+        <section className="mb-16">
+          <h2 className="text-3xl font-bold mb-8 text-cyan-400">Why Digital Advertising Matters for Your Business</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            {benefits.map((benefit, index) => (
+              <div key={index} className="flex items-center p-4 bg-gray-800/30 rounded-lg border border-gray-700">
+                <TrendingUp className="mr-3 text-cyan-400 flex-shrink-0" size={20} />
+                <span className="text-gray-300">{benefit}</span>
+              </div>
+            ))}
+          </div>
+        </section>
 
-            <Link to="/work" className="inline-flex items-center px-8 py-4 bg-transparent border-2 border-cyan-400 text-cyan-400 font-semibold rounded-full hover:bg-cyan-400 hover:text-black transition-all duration-300 hover:scale-105">
-              View More Work
-              <Eye className="ml-2" size={20} />
-            </Link>
+        {/* Call to Action */}
+        <section className="text-center">
+          <div className="bg-gradient-to-r from-cyan-400/10 to-purple-400/10 p-8 rounded-2xl border border-gray-700">
+            <h2 className="text-3xl font-bold text-white mb-4">Ready to Scale Your Business?</h2>
+            <p className="text-gray-300 mb-6 text-lg max-w-2xl mx-auto">
+              Let's create high-converting ad campaigns that drive real results for your business. 
+              Get a free consultation and strategy session.
+            </p>
+            <button
+              onClick={() => setShowInquiry(true)}
+              className="inline-flex items-center px-8 py-4 bg-cyan-400 text-black font-semibold rounded-full hover:bg-cyan-300 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-400/25"
+            >
+              <Mail className="mr-2" size={20} />
+              Send Digital Marketing Inquiry
+            </button>
+          </div>
+        </section>
+      </div>
+
+      {/* Inquiry Popup */}
+      {showInquiry && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-6">
+          <div className="bg-gray-800 rounded-2xl border border-gray-700 p-8 max-w-md w-full max-h-[90vh] overflow-y-auto">
+            <h3 className="text-2xl font-bold text-white mb-6">Digital Marketing Inquiry</h3>
+            <form className="space-y-4">
+              <div>
+                <label className="block text-gray-300 mb-2">Full Name *</label>
+                <input
+                  type="text"
+                  className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:border-cyan-400 focus:outline-none"
+                  placeholder="Enter your full name"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-gray-300 mb-2">Phone Number *</label>
+                <input
+                  type="tel"
+                  className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:border-cyan-400 focus:outline-none"
+                  placeholder="Enter your phone number"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-gray-300 mb-2">Email *</label>
+                <input
+                  type="email"
+                  className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:border-cyan-400 focus:outline-none"
+                  placeholder="Enter your email"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-gray-300 mb-2">Organization</label>
+                <input
+                  type="text"
+                  className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:border-cyan-400 focus:outline-none"
+                  placeholder="Enter your organization name"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-gray-300 mb-2">Monthly Ad Budget</label>
+                <input
+                  type="text"
+                  className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:border-cyan-400 focus:outline-none"
+                  placeholder="₹50,000"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-gray-300 mb-2">Digital Marketing Goals & Requirements</label>
+                <textarea
+                  rows={4}
+                  className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:border-cyan-400 focus:outline-none resize-none"
+                  placeholder="Tell us about your business goals, target audience, advertising platforms you're interested in, and what you'd like to achieve..."
+                />
+              </div>
+              
+              <div className="flex space-x-4 pt-4">
+                <button
+                  type="button"
+                  onClick={() => setShowInquiry(false)}
+                  className="flex-1 px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-500 transition-colors duration-300"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="flex-1 px-6 py-3 bg-cyan-400 text-black font-semibold rounded-lg hover:bg-cyan-300 transition-colors duration-300"
+                >
+                  Send Inquiry
+                </button>
+              </div>
+            </form>
           </div>
         </div>
-      </section>
+      )}
     </div>
   );
 };
