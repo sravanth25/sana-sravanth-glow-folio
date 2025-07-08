@@ -1,143 +1,144 @@
 
-import { useEffect, useRef, useState } from 'react';
-import { Search, TrendingUp, Target, Brain, Palette, Settings, Mail, Linkedin } from 'lucide-react';
+import { useState } from 'react';
+import { Mail, Phone, MapPin, Send, MessageCircle, TrendingUp, Target, Users, BarChart } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import InquiryPopup from './InquiryPopup';
 
 const ContactSection = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
+  const [showInquiry, setShowInquiry] = useState(false);
+  const [selectedService, setSelectedService] = useState('');
 
   const services = [
-    {
-      icon: Search,
-      title: 'SEO Optimization',
-      description: 'Drive organic growth with search-first strategies, on-page optimization, and keyword-rich content that ranks.',
-      color: 'from-cyan-400 to-blue-500'
+    { 
+      name: 'SEO Optimization', 
+      icon: <TrendingUp className="w-6 h-6" />, 
+      description: 'Boost your organic rankings',
+      slug: 'seo'
     },
-    {
-      icon: TrendingUp,
-      title: 'Digital Marketing Strategy',
-      description: 'Full-funnel digital plans across platforms – tailored for performance, powered by storytelling.',
-      color: 'from-green-400 to-cyan-400'
+    { 
+      name: 'PPC Advertising', 
+      icon: <Target className="w-6 h-6" />, 
+      description: 'Maximize ad performance',
+      slug: 'ppc'
     },
-    {
-      icon: Target,
-      title: 'Meta & Google Ads',
-      description: 'Launch targeted campaigns that convert — with smart audience segmentation and conversion tracking.',
-      color: 'from-purple-400 to-pink-400'
+    { 
+      name: 'Social Media', 
+      icon: <Users className="w-6 h-6" />, 
+      description: 'Engage your audience',
+      slug: 'social'
     },
-    {
-      icon: Brain,
-      title: 'Website Design Using AI',
-      description: 'Craft modern, responsive websites with AI tools that speed up delivery and boost performance.',
-      color: 'from-orange-400 to-red-400'
-    },
-    {
-      icon: Palette,
-      title: 'UI/UX Design',
-      description: 'Design interfaces that engage users and simplify journeys – from landing pages to dashboards.',
-      color: 'from-indigo-400 to-purple-400'
-    },
-    {
-      icon: Settings,
-      title: 'Custom Solutions & Integrations',
-      description: 'Automation, CRM workflows, analytics dashboards — if it\'s digital, I can optimize it.',
-      color: 'from-teal-400 to-green-400'
+    { 
+      name: 'Analytics & Data', 
+      icon: <BarChart className="w-6 h-6" />, 
+      description: 'Make data-driven decisions',
+      slug: 'analytics'
     }
   ];
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+  const handleServiceClick = (service: string) => {
+    setSelectedService(service);
+    setShowInquiry(true);
+  };
 
   return (
-    <section id="contact" ref={sectionRef} className="py-20 bg-gray-900/50">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Title and Pitch */}
-        <div className={`text-center mb-16 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
+    <section id="contact" className="py-20 relative">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-900">
+        <div className="absolute inset-0 bg-gradient-to-tr from-cyan-900/10 via-transparent to-blue-900/10"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Let's Work <span className="text-cyan-400">Together</span>
+            Let's Work{' '}
+            <span className="text-cyan-400 relative">
+              Together
+              <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-cyan-400/30 via-cyan-400 to-cyan-400/30 rounded"></div>
+            </span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            If you're looking for creative digital marketing that performs, you've found your partner. 
-            I bring strategy, storytelling, and smart tools together for real results.
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            Ready to take your digital marketing to the next level? Choose a service below to learn more.
           </p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {services.map((service, index) => {
-            const IconComponent = service.icon;
-            return (
-              <div
-                key={service.title}
-                className={`${isVisible ? 'animate-fade-in' : 'opacity-0'} transition-opacity duration-700`}
-                style={{ transitionDelay: `${index * 150 + 300}ms` }}
-              >
-                <div className="group bg-gray-800/50 p-6 rounded-xl hover:bg-gray-800/70 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-400/10 border border-gray-700 hover:border-cyan-400/50 h-full">
-                  <div className="flex items-start space-x-4">
-                    <div className={`p-3 rounded-full bg-gradient-to-r ${service.color} group-hover:scale-110 transition-transform duration-300 flex-shrink-0`}>
-                      <IconComponent className="text-black" size={24} />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors duration-300">
-                        {service.title}
-                      </h3>
-                      <p className="text-gray-300 leading-relaxed">
-                        {service.description}
-                      </p>
-                    </div>
-                  </div>
-                </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          {services.map((service, index) => (
+            <Link
+              key={index}
+              to={`/blog?service=${service.slug}`}
+              className="group bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-xl p-6 hover:border-cyan-400/50 hover:bg-gray-800/50 transition-all duration-300 hover:scale-105"
+            >
+              <div className="text-cyan-400 mb-4 group-hover:scale-110 transition-transform duration-300">
+                {service.icon}
               </div>
-            );
-          })}
+              <h3 className="text-lg font-semibold mb-2 group-hover:text-cyan-400 transition-colors">
+                {service.name}
+              </h3>
+              <p className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors">
+                {service.description}
+              </p>
+            </Link>
+          ))}
         </div>
 
-        {/* Contact CTA Box */}
-        <div className={`${isVisible ? 'animate-fade-in' : 'opacity-0'} transition-opacity duration-700 delay-1000`}>
-          <div className="bg-gradient-to-r from-cyan-400/10 to-purple-400/10 p-8 rounded-2xl border border-gray-700 hover:border-cyan-400/50 transition-all duration-300 text-center">
-            <h3 className="text-2xl font-bold text-white mb-4">Ready to grow your brand?</h3>
-            <p className="text-gray-300 mb-6">Let's discuss how we can take your digital presence to the next level.</p>
-            
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <a
-                href="mailto:sanasravanth25@gmail.com"
-                className="group inline-flex items-center px-6 py-3 bg-cyan-400 text-black font-semibold rounded-full hover:bg-cyan-300 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-400/25"
-              >
-                <Mail className="mr-2 group-hover:scale-110 transition-transform duration-300" size={20} />
-                Send Inquiry
-              </a>
-              
-              <a
-                href="https://in.linkedin.com/in/sana-sravanth-3b084a231"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center px-6 py-3 bg-gray-800/50 text-white font-semibold rounded-full hover:bg-gray-700 transition-all duration-300 hover:scale-105 border border-gray-600 hover:border-cyan-400/50"
-              >
-                <Linkedin className="mr-2" size={20} />
-                LinkedIn
-              </a>
+        {/* Contact Information */}
+        <div className="grid md:grid-cols-2 gap-12">
+          <div>
+            <h3 className="text-2xl font-bold mb-6 text-cyan-400">Get In Touch</h3>
+            <div className="space-y-6">
+              <div className="flex items-center space-x-4">
+                <div className="w-12 h-12 bg-cyan-400/10 rounded-full flex items-center justify-center">
+                  <Mail className="w-6 h-6 text-cyan-400" />
+                </div>
+                <div>
+                  <p className="text-gray-300">Email</p>
+                  <p className="text-white font-semibold">hello@digitalmarketer.com</p>
+                </div>
+              </div>
+              <div className="flex items-center space-x-4">
+                <div className="w-12 h-12 bg-cyan-400/10 rounded-full flex items-center justify-center">
+                  <Phone className="w-6 h-6 text-cyan-400" />
+                </div>
+                <div>
+                  <p className="text-gray-300">Phone</p>
+                  <p className="text-white font-semibold">+1 (555) 123-4567</p>
+                </div>
+              </div>
+              <div className="flex items-center space-x-4">
+                <div className="w-12 h-12 bg-cyan-400/10 rounded-full flex items-center justify-center">
+                  <MapPin className="w-6 h-6 text-cyan-400" />
+                </div>
+                <div>
+                  <p className="text-gray-300">Location</p>
+                  <p className="text-white font-semibold">New York, NY</p>
+                </div>
+              </div>
             </div>
-            
-            <p className="text-gray-400 mt-4 text-sm">
-              Email: <span className="text-cyan-400">sanasravanth25@gmail.com</span>
+          </div>
+
+          <div>
+            <h3 className="text-2xl font-bold mb-6 text-cyan-400">Quick Inquiry</h3>
+            <p className="text-gray-300 mb-6">
+              Not sure which service you need? Send me a quick message and I'll help you find the right solution.
             </p>
+            <button
+              onClick={() => handleServiceClick('General Inquiry')}
+              className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-semibold rounded-full hover:from-cyan-300 hover:to-blue-400 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/25 transform"
+            >
+              <MessageCircle className="mr-2 group-hover:translate-x-1 transition-transform duration-300" size={20} />
+              Send Quick Message
+            </button>
           </div>
         </div>
       </div>
+
+      {/* Inquiry Popup */}
+      <InquiryPopup 
+        open={showInquiry} 
+        onOpenChange={setShowInquiry}
+        service={selectedService}
+      />
     </section>
   );
 };
