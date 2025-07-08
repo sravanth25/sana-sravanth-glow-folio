@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Work from "./pages/Work";
 import SeoGuide from "./pages/SeoGuide";
+import MetaGoogleAds from "./pages/MetaGoogleAds";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
