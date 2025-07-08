@@ -27,7 +27,9 @@ const ContactSection = () => {
       icon: Target,
       title: 'Meta & Google Ads',
       description: 'Launch targeted campaigns that convert — with smart audience segmentation and conversion tracking.',
-      color: 'from-purple-400 to-pink-400'
+      color: 'from-purple-400 to-pink-400',
+      isClickable: true,
+      path: '/meta-google-ads'
     },
     {
       icon: Brain,
