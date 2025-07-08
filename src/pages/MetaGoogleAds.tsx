@@ -150,7 +150,7 @@ const MetaGoogleAds = () => {
               <Target className="text-black" size={32} />
             </div>
             <div>
-              <h1 className="text-4xl font-bold">Digital Marketing & Advertising Guide</h1>
+              <h1 className="text-4xl font-bold">Digital Marketing</h1>
               <p className="text-gray-300 text-lg">Master the art of digital advertising with Meta & Google Ads</p>
             </div>
           </div>
