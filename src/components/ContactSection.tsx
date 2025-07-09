@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState } from 'react';
 import { Search, Target, Brain, Palette, Mail, Linkedin } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -26,9 +27,11 @@ const ContactSection = () => {
     },
     {
       icon: Brain,
-      title: 'Website Design Using AI',
-      description: 'Craft modern, responsive websites with AI tools that speed up delivery and boost performance.',
-      color: 'from-orange-400 to-red-400'
+      title: 'Website Design',
+      description: 'Craft modern, responsive websites with cutting-edge tools that speed up delivery and boost performance.',
+      color: 'from-orange-400 to-red-400',
+      isClickable: true,
+      path: '/blog'
     },
     {
       icon: Palette,
