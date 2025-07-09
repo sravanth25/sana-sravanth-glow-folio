@@ -1,6 +1,5 @@
-
 import { useEffect, useRef, useState } from 'react';
-import { Search, TrendingUp, Target, Brain, Palette, Settings, Mail, Linkedin } from 'lucide-react';
+import { Search, Target, Brain, Palette, Mail, Linkedin } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const ContactSection = () => {
@@ -18,14 +17,8 @@ const ContactSection = () => {
       path: '/seo-guide'
     },
     {
-      icon: TrendingUp,
-      title: 'Digital Marketing Strategy',
-      description: 'Full-funnel digital plans across platforms – tailored for performance, powered by storytelling.',
-      color: 'from-green-400 to-cyan-400'
-    },
-    {
       icon: Target,
-      title: 'Meta & Google Ads',
+      title: 'Digital Marketing',
       description: 'Launch targeted campaigns that convert — with smart audience segmentation and conversion tracking.',
       color: 'from-purple-400 to-pink-400',
       isClickable: true,
@@ -42,12 +35,6 @@ const ContactSection = () => {
       title: 'UI/UX Design',
       description: 'Design interfaces that engage users and simplify journeys – from landing pages to dashboards.',
       color: 'from-indigo-400 to-purple-400'
-    },
-    {
-      icon: Settings,
-      title: 'Custom Solutions & Integrations',
-      description: 'Automation, CRM workflows, analytics dashboards — if it\'s digital, I can optimize it.',
-      color: 'from-teal-400 to-green-400'
     }
   ];
 
@@ -89,7 +76,7 @@ const ContactSection = () => {
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 mb-16">
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (
