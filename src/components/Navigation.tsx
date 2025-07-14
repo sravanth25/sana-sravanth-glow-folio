@@ -50,77 +50,58 @@ const Navigation = () => {
   };
 
   return (
-    <>
-      {/* Desktop Navigation */}
-      <nav className="hidden md:block fixed top-4 left-1/2 transform -translate-x-1/2 z-50 bg-black/90 backdrop-blur-md border border-gray-800 rounded-full px-6 py-3">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <div
-            onClick={() => scrollToSection('home')}
-            className="text-xl font-bold text-cyan-400 cursor-pointer hover:text-cyan-300 transition-colors duration-300 mr-8"
-          >
-            Sana Sravanth
-          </div>
+    <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 bg-black/90 backdrop-blur-md border border-gray-800 rounded-full px-6 py-3">
+      <div className="flex items-center justify-between">
+        {/* Logo */}
+        <div
+          onClick={() => scrollToSection('home')}
+          className="text-xl font-bold text-cyan-400 cursor-pointer hover:text-cyan-300 transition-colors duration-300 mr-8"
+        >
+          Sana Sravanth
+        </div>
 
-          {/* Desktop Navigation Items */}
-          <div className="flex items-center space-x-6">
-            {navItems.map(item => (
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center space-x-6">
+          {navItems.map(item => (
+            <button
+              key={item.id}
+              onClick={() => scrollToSection(item.id)}
+              className={`nav-link relative text-white hover:text-cyan-400 transition-colors duration-300 px-4 py-2 rounded-full ${
+                activeSection === item.id ? 'active bg-cyan-400/20' : 'hover:bg-gray-800/50'
+              }`}
+            >
+              {item.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="md:hidden text-white hover:text-cyan-400 transition-colors duration-300 p-2 rounded-full hover:bg-gray-800/50"
+        >
+          {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <div className="md:hidden absolute top-full left-0 right-0 mt-2 bg-black/95 backdrop-blur-md border border-gray-800 rounded-2xl animate-fade-in">
+          <div className="px-4 py-4 space-y-2">
+            {navItems.map((item, index) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`nav-link relative text-white hover:text-cyan-400 transition-colors duration-300 px-4 py-2 rounded-full ${
-                  activeSection === item.id ? 'active bg-cyan-400/20' : 'hover:bg-gray-800/50'
-                }`}
+                className="block w-full text-left text-white hover:text-cyan-400 transition-colors duration-300 py-3 px-4 rounded-full hover:bg-gray-800/50"
+                style={{ animationDelay: `${index * 100}ms` }}
               >
                 {item.label}
               </button>
             ))}
           </div>
         </div>
-      </nav>
-
-      {/* Mobile Navigation */}
-      <div className="md:hidden">
-        {/* Mobile Header with Logo */}
-        <div className="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-md border-b border-gray-800 px-4 py-3">
-          <div
-            onClick={() => scrollToSection('home')}
-            className="text-lg font-bold text-cyan-400 cursor-pointer hover:text-cyan-300 transition-colors duration-300"
-          >
-            Sana Sravanth
-          </div>
-        </div>
-
-        {/* Mobile Menu Button - Pinterest Style (Bottom Right) */}
-        <button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-cyan-400 text-black rounded-full flex items-center justify-center shadow-lg hover:bg-cyan-300 transition-all duration-300 hover:scale-110"
-        >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-
-        {/* Mobile Menu Overlay */}
-        {isMenuOpen && (
-          <div className="fixed inset-0 z-40 bg-black/95 backdrop-blur-md animate-fade-in">
-            <div className="flex flex-col items-center justify-center h-full space-y-8">
-              {navItems.map((item, index) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className="text-2xl text-white hover:text-cyan-400 transition-colors duration-300 py-4 px-8 rounded-full hover:bg-gray-800/50"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Add top padding to body content for mobile header */}
-        <div className="pt-16"></div>
-      </div>
-    </>
+      )}
+    </nav>
   );
 };
 
