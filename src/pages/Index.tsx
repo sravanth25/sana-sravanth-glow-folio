@@ -51,7 +51,7 @@ const Index = () => {
       scale: 1,
       transition: {
         duration: 0.8,
-        ease: [0.4, 0, 0.2, 1],
+        ease: "easeOut",
         staggerChildren: 0.1
       }
     }
@@ -67,7 +67,7 @@ const Index = () => {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: [0.4, 0, 0.2, 1]
+        ease: "easeOut"
       }
     }
   };
