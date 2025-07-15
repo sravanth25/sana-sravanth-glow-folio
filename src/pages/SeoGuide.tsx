@@ -1,11 +1,15 @@
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ArrowLeft, Search, Code, TrendingUp, Target, FileText, CheckCircle, Mail } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const SeoGuide = () => {
   const navigate = useNavigate();
   const [showInquiry, setShowInquiry] = useState(false);
+
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const seoTypes = [
     {
@@ -14,7 +18,7 @@ const SeoGuide = () => {
       examples: ["Title tags optimization", "Meta descriptions", "Header tags (H1-H6)", "Internal linking", "Content optimization"]
     },
     {
-      title: "Off-Page SEO",
+      title: "Off-Page SEO", 
       description: "Activities outside your website that impact your rankings within search engine results",
       examples: ["Backlink building", "Social media marketing", "Guest posting", "Brand mentions", "Local citations"]
     },
@@ -60,7 +64,7 @@ const SeoGuide = () => {
 
   const benefits = [
     "Increased organic traffic and visibility",
-    "Better user experience and site performance",
+    "Better user experience and site performance", 
     "Higher conversion rates and ROI",
     "Long-term sustainable growth",
     "Competitive advantage in search results",
