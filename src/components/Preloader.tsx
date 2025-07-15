@@ -82,7 +82,7 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                     className="object-cover"
                   />
                   <AvatarFallback className="text-xl md:text-2xl font-bold bg-gradient-to-br from-cyan-400 to-blue-500 text-black">
-                    SS
+                    Sana
                   </AvatarFallback>
                 </Avatar>
               </motion.div>
