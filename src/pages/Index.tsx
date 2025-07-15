@@ -8,9 +8,11 @@ import ExperienceSection from '../components/ExperienceSection';
 import SkillsSection from '../components/SkillsSection';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
+import Preloader from '../components/Preloader';
 
 const Index = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,31 +27,41 @@ const Index = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handlePreloaderComplete = () => {
+    setIsLoading(false);
+  };
+
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden">
-      <Navigation />
+    <>
+      {/* Preloader */}
+      {isLoading && <Preloader onComplete={handlePreloaderComplete} />}
       
-      <main>
-        <HeroSection />
-        <AboutSection />
-        <ExperienceSection />
-        <SkillsSection />
-        <ContactSection />
-      </main>
+      {/* Main Content */}
+      <div className={`min-h-screen bg-black text-white overflow-x-hidden transition-opacity duration-500 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
+        <Navigation />
+        
+        <main>
+          <HeroSection />
+          <AboutSection />
+          <ExperienceSection />
+          <SkillsSection />
+          <ContactSection />
+        </main>
 
-      <Footer />
+        <Footer />
 
-      {/* Scroll to top button */}
-      {showScrollTop && (
-        <button
-          onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-50 p-3 bg-cyan-400 text-black rounded-full hover:bg-cyan-300 transition-all duration-300 hover:scale-110 animate-fade-in"
-          aria-label="Scroll to top"
-        >
-          <ArrowUp size={20} />
-        </button>
-      )}
-    </div>
+        {/* Scroll to top button */}
+        {showScrollTop && (
+          <button
+            onClick={scrollToTop}
+            className="fixed bottom-8 right-8 z-50 p-3 bg-cyan-400 text-black rounded-full hover:bg-cyan-300 transition-all duration-300 hover:scale-110 animate-fade-in"
+            aria-label="Scroll to top"
+          >
+            <ArrowUp size={20} />
+          </button>
+        )}
+      </div>
+    </>
   );
 };
 
