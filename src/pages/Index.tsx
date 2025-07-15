@@ -1,4 +1,5 @@
 
+
 import { useState, useEffect, useRef } from 'react';
 import { ChevronDown, Menu, X, ArrowUp, Mail, Linkedin, MapPin, Phone } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -50,7 +51,7 @@ const Index = () => {
       scale: 1,
       transition: {
         duration: 0.8,
-        ease: "easeOut",
+        ease: [0.4, 0, 0.2, 1],
         staggerChildren: 0.1
       }
     }
@@ -66,7 +67,7 @@ const Index = () => {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
+        ease: [0.4, 0, 0.2, 1]
       }
     }
   };
@@ -130,3 +131,4 @@ const Index = () => {
 };
 
 export default Index;
+
