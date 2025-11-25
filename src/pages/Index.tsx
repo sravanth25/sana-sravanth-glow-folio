@@ -32,17 +32,14 @@ const Index = () => {
 
   const handlePreloaderComplete = () => {
     setIsLoading(false);
-    // Delay content reveal for smoother transition
-    setTimeout(() => {
-      setShowContent(true);
-    }, 200);
+    setShowContent(true);
   };
 
   // Animation variants for content entrance
   const contentVariants = {
     hidden: {
       opacity: 0,
-      y: 30,
+      y: 20,
       scale: 0.98
     },
     visible: {
@@ -50,8 +47,8 @@ const Index = () => {
       y: 0,
       scale: 1,
       transition: {
-        duration: 1.2,
-        staggerChildren: 0.2
+        duration: 0.6,
+        staggerChildren: 0.1
       }
     }
   };
@@ -65,7 +62,7 @@ const Index = () => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.8
+        duration: 0.5
       }
     }
   };
