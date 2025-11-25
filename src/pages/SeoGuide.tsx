@@ -1,15 +1,63 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Search, Code, TrendingUp, Target, FileText, CheckCircle, Mail } from 'lucide-react';
+import { ArrowLeft, Search, Code, TrendingUp, Target, FileText, CheckCircle, Mail, Phone, Building2, X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
 
 const SeoGuide = () => {
   const navigate = useNavigate();
   const [showInquiry, setShowInquiry] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
   // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const handleSubmitInquiry = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      inquiryType: "SEO",
+      name: formData.get("name") as string,
+      email: formData.get("email") as string,
+      phone: formData.get("phone") as string,
+      company: formData.get("company") as string,
+      website: formData.get("website") as string,
+      goals: formData.get("goals") as string,
+    };
+
+    try {
+      const { error } = await supabase.functions.invoke("send-inquiry-email", {
+        body: data,
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: "Success!",
+        description: "Your inquiry has been sent successfully. We'll get back to you soon!",
+      });
+
+      setShowInquiry(false);
+      e.currentTarget.reset();
+    } catch (error) {
+      console.error("Error sending inquiry:", error);
+      toast({
+        title: "Error",
+        description: "Failed to send inquiry. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const seoTypes = [
     {
@@ -188,77 +236,107 @@ const SeoGuide = () => {
       {/* Inquiry Popup */}
       {showInquiry && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-6">
-          <div className="bg-gray-800 rounded-2xl border border-gray-700 p-8 max-w-md w-full max-h-[90vh] overflow-y-auto">
+          <div className="bg-gray-800 rounded-2xl border border-gray-700 p-8 max-w-md w-full max-h-[90vh] overflow-y-auto relative">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setShowInquiry(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-white"
+            >
+              <X size={20} />
+            </Button>
+            
             <h3 className="text-2xl font-bold text-white mb-6">SEO Inquiry</h3>
-            <form className="space-y-4">
-              <div>
-                <label className="block text-gray-300 mb-2">Full Name *</label>
-                <input
-                  type="text"
-                  className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:border-cyan-400 focus:outline-none"
-                  placeholder="Enter your full name"
+            
+            <form onSubmit={handleSubmitInquiry} className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-gray-300 flex items-center gap-2">
+                    <Mail className="w-4 h-4" />
+                    Name *
+                  </label>
+                  <Input 
+                    name="name" 
+                    placeholder="Your name" 
+                    required 
+                    className="bg-gray-700 border-gray-600 text-white"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-gray-300 flex items-center gap-2">
+                    <Mail className="w-4 h-4" />
+                    Email *
+                  </label>
+                  <Input 
+                    name="email" 
+                    type="email" 
+                    placeholder="your@email.com" 
+                    required 
+                    className="bg-gray-700 border-gray-600 text-white"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-gray-300 flex items-center gap-2">
+                    <Phone className="w-4 h-4" />
+                    Phone
+                  </label>
+                  <Input 
+                    name="phone" 
+                    placeholder="Your phone number" 
+                    className="bg-gray-700 border-gray-600 text-white"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-gray-300 flex items-center gap-2">
+                    <Building2 className="w-4 h-4" />
+                    Company
+                  </label>
+                  <Input 
+                    name="company" 
+                    placeholder="Your company" 
+                    className="bg-gray-700 border-gray-600 text-white"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-gray-300">Website URL</label>
+                <Input 
+                  name="website" 
+                  placeholder="https://yourwebsite.com" 
+                  className="bg-gray-700 border-gray-600 text-white"
                 />
               </div>
-              
-              <div>
-                <label className="block text-gray-300 mb-2">Phone Number *</label>
-                <input
-                  type="tel"
-                  className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:border-cyan-400 focus:outline-none"
-                  placeholder="Enter your phone number"
+
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-gray-300">SEO Goals & Requirements</label>
+                <Textarea 
+                  name="goals" 
+                  placeholder="Tell us about your SEO needs..." 
+                  className="min-h-[100px] bg-gray-700 border-gray-600 text-white" 
                 />
               </div>
-              
-              <div>
-                <label className="block text-gray-300 mb-2">Email *</label>
-                <input
-                  type="email"
-                  className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:border-cyan-400 focus:outline-none"
-                  placeholder="Enter your email"
-                />
-              </div>
-              
-              <div>
-                <label className="block text-gray-300 mb-2">Organization</label>
-                <input
-                  type="text"
-                  className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:border-cyan-400 focus:outline-none"
-                  placeholder="Enter your organization name"
-                />
-              </div>
-              
-              <div>
-                <label className="block text-gray-300 mb-2">Current Website (if any)</label>
-                <input
-                  type="url"
-                  className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:border-cyan-400 focus:outline-none"
-                  placeholder="https://yourwebsite.com"
-                />
-              </div>
-              
-              <div>
-                <label className="block text-gray-300 mb-2">SEO Goals & Requirements</label>
-                <textarea
-                  rows={4}
-                  className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:border-cyan-400 focus:outline-none resize-none"
-                  placeholder="Tell us about your SEO goals, target keywords, current challenges, and what you'd like to achieve..."
-                />
-              </div>
-              
-              <div className="flex space-x-4 pt-4">
-                <button
+
+              <div className="flex gap-3 pt-4">
+                <Button
                   type="button"
+                  variant="outline"
                   onClick={() => setShowInquiry(false)}
-                  className="flex-1 px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-500 transition-colors duration-300"
+                  className="flex-1"
+                  disabled={isSubmitting}
                 >
                   Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="flex-1 px-6 py-3 bg-cyan-400 text-black font-semibold rounded-lg hover:bg-cyan-300 transition-colors duration-300"
+                </Button>
+                <Button 
+                  type="submit" 
+                  className="flex-1 bg-cyan-400 hover:bg-cyan-300 text-black" 
+                  disabled={isSubmitting}
                 >
-                  Send Inquiry
-                </button>
+                  {isSubmitting ? "Sending..." : "Send Inquiry"}
+                </Button>
               </div>
             </form>
           </div>
