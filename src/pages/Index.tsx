@@ -47,7 +47,8 @@ const Index = () => {
       y: 0,
       scale: 1,
       transition: {
-        duration: 0.6,
+        duration: 0.8,
+        delay: 0.2,
         staggerChildren: 0.1
       }
     }
