@@ -1,6 +1,6 @@
 
 import { useEffect, useRef, useState } from 'react';
-import { Search, Target, Brain, Palette, Mail, Linkedin } from 'lucide-react';
+import { Search, Target, Brain, Palette, Mail, Linkedin, Workflow, Sparkles } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const ContactSection = () => {
@@ -38,6 +38,18 @@ const ContactSection = () => {
       title: 'UI/UX Design',
       description: 'Design interfaces that engage users and simplify journeys – from landing pages to dashboards.',
       color: 'from-indigo-400 to-purple-400'
+    },
+    {
+      icon: Workflow,
+      title: 'N8N Automation',
+      description: 'Automate workflows and streamline business processes with powerful N8N integrations that save time and boost productivity.',
+      color: 'from-green-400 to-teal-400'
+    },
+    {
+      icon: Sparkles,
+      title: 'Branding & Design',
+      description: 'Create compelling brand identities and visual assets that make your business stand out and resonate with your audience.',
+      color: 'from-yellow-400 to-orange-400'
     }
   ];
 
@@ -79,7 +91,7 @@ const ContactSection = () => {
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (
