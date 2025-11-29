@@ -34,7 +34,9 @@ const SkillsSection = () => {
     'SEMrush',
     'Canva',
     'N8N',
-    'WhatsApp Automation (Meta Cloud API)'
+    'WhatsApp Automation (Meta Cloud API)',
+    'Firebase Studio',
+    'Gemini AI'
   ];
 
   useEffect(() => {
