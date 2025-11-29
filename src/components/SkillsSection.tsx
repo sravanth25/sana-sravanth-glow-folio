@@ -1,17 +1,21 @@
-import { Search, Target, Workflow, Layout, Image, Share2 } from 'lucide-react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { FeatureCard } from './ui/grid-feature-cards';
 import n8nLogo from '@/assets/n8n-logo.png';
+import googleAdsLogo from '@/assets/google-ads-logo.png';
+import metaAdsLogo from '@/assets/meta-ads-logo.png';
+import seoLogo from '@/assets/seo-logo.png';
+import canvaLogo from '@/assets/canva-logo.png';
+import { Layout } from 'lucide-react';
 
 const skills = [
   {
     title: 'Google Ads',
-    icon: Target,
+    icon: (props: React.SVGProps<SVGSVGElement>) => <img src={googleAdsLogo} alt="Google Ads" className="size-6" />,
     description: 'Expert in creating high-converting Google Ads campaigns with strategic targeting and optimization.',
   },
   {
     title: 'Meta Ads',
-    icon: Share2,
+    icon: (props: React.SVGProps<SVGSVGElement>) => <img src={metaAdsLogo} alt="Meta Ads" className="size-6" />,
     description: 'Specialized in Facebook and Instagram advertising with proven ROI-driven strategies.',
   },
   {
@@ -21,7 +25,7 @@ const skills = [
   },
   {
     title: 'SEO',
-    icon: Search,
+    icon: (props: React.SVGProps<SVGSVGElement>) => <img src={seoLogo} alt="SEO" className="size-6" />,
     description: 'Data-driven SEO strategies to improve rankings and drive organic traffic growth.',
   },
   {
@@ -31,7 +35,7 @@ const skills = [
   },
   {
     title: 'Canva',
-    icon: Image,
+    icon: (props: React.SVGProps<SVGSVGElement>) => <img src={canvaLogo} alt="Canva" className="size-6" />,
     description: 'Professional graphic design and visual content creation for marketing campaigns.',
   },
 ];
