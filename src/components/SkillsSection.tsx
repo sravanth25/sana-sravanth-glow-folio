@@ -1,6 +1,7 @@
 import { Search, Target, Workflow, Layout, Image, Share2 } from 'lucide-react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { FeatureCard } from './ui/grid-feature-cards';
+import n8nLogo from '@/assets/n8n-logo.png';
 
 const skills = [
   {
@@ -15,7 +16,7 @@ const skills = [
   },
   {
     title: 'N8N',
-    icon: Workflow,
+    icon: (props: React.SVGProps<SVGSVGElement>) => <img src={n8nLogo} alt="N8N" className="size-6" />,
     description: 'Automation specialist using N8N to streamline workflows and boost productivity.',
   },
   {
