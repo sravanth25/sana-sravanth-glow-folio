@@ -1,16 +1,16 @@
-import { Search, Megaphone, Workflow, Palette, Pencil, Zap } from 'lucide-react';
+import { Search, Target, Workflow, Layout, Image, Share2 } from 'lucide-react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { FeatureCard } from './ui/grid-feature-cards';
 
 const skills = [
   {
     title: 'Google Ads',
-    icon: Megaphone,
+    icon: Target,
     description: 'Expert in creating high-converting Google Ads campaigns with strategic targeting and optimization.',
   },
   {
     title: 'Meta Ads',
-    icon: Zap,
+    icon: Share2,
     description: 'Specialized in Facebook and Instagram advertising with proven ROI-driven strategies.',
   },
   {
@@ -25,12 +25,12 @@ const skills = [
   },
   {
     title: 'Website Design',
-    icon: Palette,
+    icon: Layout,
     description: 'Creating beautiful, responsive websites that deliver exceptional user experiences.',
   },
   {
     title: 'Canva',
-    icon: Pencil,
+    icon: Image,
     description: 'Professional graphic design and visual content creation for marketing campaigns.',
   },
 ];
