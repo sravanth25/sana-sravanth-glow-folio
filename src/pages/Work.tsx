@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { ArrowLeft, ExternalLink, Eye, Calendar, Tag } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -10,72 +9,98 @@ const Work = () => {
 
   const projects = [
     {
-      id: 1,
-      title: "E-commerce Platform Redesign",
-      category: "ui-ux",
-      description: "Complete UI/UX overhaul of an e-commerce platform resulting in 40% increase in conversion rates",
-      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&fit=crop",
-      date: "2024",
-      tags: ["UI/UX", "E-commerce", "Mobile First"],
-      metrics: ["40% ↑ Conversion", "25% ↑ User Engagement"]
+        id: 1,
+        title: "Astrosravs — Astrology Website",
+        category: "website",
+        description: "Personalized Tarot, Numerology & Name-Correction — guidance that aligns with your life.",
+        image: "https://ik.imagekit.io/sravanth/Screenshot%202025-11-30%20191039.png", 
+        link: "https://www.astrosravs.in/",
+        date: "2024",
+        tags: ["Responsive", "CMS", "WhatsApp booking", "UX-focused"],
+        metrics: [
+          "Higher engagement and bookings via WhatsApp",
+          "Stronger trust signals from certificate + testimonials",
+          "Simpler intake for readings"
+        ],
+        caseStudy: {
+          problem: "Visitors seeking spiritual guidance needed an easy, trustworthy way to book readings, verify expertise, and view real client results.",
+          solution: "Built a conversion-focused site with clear services sections, WhatsApp booking flow, testimonials carousel, and certificate proof to build trust.",
+          outcome: "Higher engagement and bookings via WhatsApp, stronger trust signals from certificate + testimonials, and simpler intake for readings."
+        },
+        testimonial: "“Everything she said was true — it was an unforgettable experience.” — Referred Client"
     },
     {
-      id: 2,
-      title: "SaaS Dashboard Interface",
-      category: "ui-ux",
-      description: "Modern dashboard design for B2B SaaS platform with complex data visualization",
-      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=400&fit=crop",
-      date: "2024",
-      tags: ["Dashboard", "SaaS", "Data Viz"],
-      metrics: ["60% ↑ Task Completion", "35% ↓ Support Tickets"]
+        id: 2,
+        title: "Reymedic — Pharmacy Website",
+        category: "website",
+        description: "Community pharmacy with online product browsing & prescription services.",
+        image: "https://ik.imagekit.io/sravanth/Screenshot%202025-11-30%20192717.png",
+        link: "https://www.reymedic.com/",
+        date: "2024",
+        tags: ["E-commerce-lite", "Product catalog", "Prescription upload", "SEO basics"],
+        metrics: [
+            "Reduced in-store phone queries",
+            "Streamlined prescription handling",
+            "Better conversion from product pages to in-store / pickup visits"
+        ],
+        caseStudy: {
+          problem: "Local customers needed a reliable online way to browse products, submit prescriptions, and get quick answers from pharmacists.",
+          solution: "Designed a clear product-first site with an easy prescription upload flow, health tips, and visible pharmacist expertise.",
+          outcome: "Reduced in-store phone queries, streamlined prescription handling and better conversion from product pages to in-store / pickup visits."
+        },
+        testimonial: "“Fast service, competitive prices, and genuine care.” — Michael Chen"
     },
     {
-      id: 3,
-      title: "Tech Startup Website",
-      category: "website",
-      description: "Full website design and development for AI startup with modern animations",
-      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600&h=400&fit=crop",
-      date: "2024",
-      tags: ["React", "Animation", "Startup"],
-      metrics: ["200% ↑ Lead Generation", "50% ↑ Time on Site"]
+        id: 3,
+        title: "Satyanarayancollege — College Website",
+        category: "website",
+        description: "Educational institute website showcasing courses, admissions, campus life, achievements, and community initiatives.",
+        image: "https://ik.imagekit.io/sravanth/Screenshot%202025-11-30%20193158.png",
+        link: "https://satyanarayancollege.in/",
+        date: "2023",
+        tags: ["Courses & Programs Showcase", "Faculty & Leadership Profiles", "Achievements & Placements", "Campus Life & Events", "Admissions & Contact Information"],
+        metrics: [
+            "Improved information discoverability for students & parents",
+            "Higher-quality admission enquiries through clear course structure",
+            "Stronger credibility via achievements, placement partners & community outreach"
+        ]
     },
     {
-      id: 4,
-      title: "Healthcare Platform",
-      category: "website",
-      description: "Responsive website for telemedicine platform with patient portal integration",
-      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=600&h=400&fit=crop",
-      date: "2023",
-      tags: ["Healthcare", "Portal", "Responsive"],
-      metrics: ["150% ↑ Patient Bookings", "45% ↑ User Satisfaction"]
+        id: 4,
+        title: "Botivo — WhatsApp Web Chat (API Connected)",
+        category: "website",
+        description: "Real-time web-based WhatsApp chat interface fully integrated with the WhatsApp Cloud API.",
+        image: "https://ik.imagekit.io/sravanth/Screenshot%202025-11-30%20193807.png",
+        date: "2023",
+        tags: ["WhatsApp Cloud API", "Real-time Chat UI", "Message Automation Ready", "API-driven Messaging"],
+        metrics: [
+            "Seamless two-way messaging using WhatsApp Cloud API",
+            "Faster customer responses with a clean, intuitive chat interface",
+            "Extendable for chatbot flows, n8n automations, and CRM integrations"
+        ]
     },
     {
-      id: 5,
-      title: "Fashion Brand Campaign",
-      category: "meta-ads",
-      description: "Meta ads campaign for luxury fashion brand targeting millennials",
-      image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=600&h=400&fit=crop",
-      date: "2024",
-      tags: ["Fashion", "Luxury", "Millennials"],
-      metrics: ["300% ROAS", "2.5M+ Impressions", "15K+ Conversions"]
-    },
-    {
-      id: 6,
-      title: "SaaS Product Launch",
-      category: "meta-ads",
-      description: "Complete Meta ads strategy for B2B SaaS product launch and user acquisition",
-      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&fit=crop",
-      date: "2024",
-      tags: ["B2B", "SaaS", "Launch"],
-      metrics: ["450% ROAS", "5K+ Qualified Leads", "$2.50 CPC"]
+        id: 5,
+        title: "DigiStellar — Agency Website",
+        category: "website",
+        description: "Futuristic digital agency website built to showcase services, projects, branding, and digital solutions.",
+        image: "https://ik.imagekit.io/sravanth/Screenshot%202025-11-30%20194204.png",
+        link: "https://www.digistellar.in/",
+        date: "2023",
+        tags: ["Web & App Development", "Branding & UI/UX", "Digital Marketing", "Automation & AI Solutions"],
+        metrics: [
+            "Stronger agency positioning with premium visual identity",
+            "Improved leads via structured services + contact funnels",
+            "Portfolio-driven trust building with showcased client projects"
+        ]
     }
-  ];
+];
+
 
   const categories = [
     { id: 'all', label: 'All Projects' },
-    { id: 'ui-ux', label: 'UI/UX Design' },
     { id: 'website', label: 'Website Design' },
-    { id: 'meta-ads', label: 'Meta Ads Results' }
+    
   ];
 
   const filteredProjects = selectedCategory === 'all' 
@@ -112,7 +137,7 @@ const Work = () => {
       <section className="px-6 mb-12">
         <div className="max-w-7xl mx-auto">
           <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="w-full">
-            <TabsList className="grid w-full grid-cols-4 bg-gray-800/50 mb-8">
+            <TabsList className="grid w-full grid-cols-2 bg-gray-800/50 mb-8">
               {categories.map(category => (
                 <TabsTrigger 
                   key={category.id} 
@@ -137,32 +162,34 @@ const Work = () => {
                 className="bg-gray-900/50 border-gray-800 hover:border-cyan-400/50 transition-all duration-300 hover:scale-105 group animate-fade-in"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="relative overflow-hidden rounded-t-lg">
-                  <img 
-                    src={project.image} 
-                    alt={project.title}
-                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <Eye className="text-white" size={24} />
-                  </div>
-                </div>
-                
-                <CardHeader>
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="flex items-center gap-2 text-sm text-gray-400">
-                      <Calendar size={14} />
-                      {project.date}
+                <a href={project.link} target="_blank" rel="noopener noreferrer">
+                  <div className="relative overflow-hidden rounded-t-lg">
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <Eye className="text-white" size={24} />
                     </div>
-                    <ExternalLink size={16} className="text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
-                  <CardTitle className="text-white group-hover:text-cyan-400 transition-colors">
-                    {project.title}
-                  </CardTitle>
-                  <CardDescription className="text-gray-300">
-                    {project.description}
-                  </CardDescription>
-                </CardHeader>
+                
+                  <CardHeader>
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="flex items-center gap-2 text-sm text-gray-400">
+                        <Calendar size={14} />
+                        {project.date}
+                      </div>
+                      <ExternalLink size={16} className="text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </div>
+                    <CardTitle className="text-white group-hover:text-cyan-400 transition-colors">
+                      {project.title}
+                    </CardTitle>
+                    <CardDescription className="text-gray-300">
+                      {project.description}
+                    </CardDescription>
+                  </CardHeader>
+                </a>
 
                 <CardContent>
                   <div className="mb-4">
