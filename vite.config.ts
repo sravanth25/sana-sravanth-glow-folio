@@ -5,6 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  // This comment is added to force a server restart and apply Tailwind config changes.
   server: {
     host: "::",
     port: 8080,

@@ -9,6 +9,7 @@ import Work from "./pages/Work";
 import Blog from "./pages/Blog";
 import SeoGuide from "./pages/SeoGuide";
 import MetaGoogleAds from "./pages/MetaGoogleAds";
+import DemoOne from "./pages/demo";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -25,6 +26,7 @@ const App = () => (
           <Route path="/blog" element={<Blog />} />
           <Route path="/seo-guide" element={<SeoGuide />} />
           <Route path="/meta-google-ads" element={<MetaGoogleAds />} />
+          <Route path="/demo" element={<DemoOne />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

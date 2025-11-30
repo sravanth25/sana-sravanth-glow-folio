@@ -18,6 +18,18 @@ const Index = () => {
   const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
+    const navigationEntries = performance.getEntriesByType("navigation");
+    const navigationType = navigationEntries.length > 0 ? navigationEntries[0].type : '';
+
+    if (navigationType === 'reload') {
+        // On reload, force preloader
+        sessionStorage.removeItem('preloaderShown');
+    } else if (sessionStorage.getItem('preloaderShown')) {
+        // On back/forward navigation, skip preloader
+        setIsLoading(false);
+        setShowContent(true);
+    }
+
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 500);
     };
@@ -33,6 +45,7 @@ const Index = () => {
   const handlePreloaderComplete = () => {
     setIsLoading(false);
     setShowContent(true);
+    sessionStorage.setItem('preloaderShown', 'true');
   };
 
   // Animation variants for content entrance
