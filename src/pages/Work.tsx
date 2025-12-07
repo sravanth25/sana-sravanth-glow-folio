@@ -93,6 +93,38 @@ const Work = () => {
             "Improved leads via structured services + contact funnels",
             "Portfolio-driven trust building with showcased client projects"
         ]
+    },
+    {
+        id: 6,
+        title: "AI Chatbot — Powered by n8n",
+        category: "n8n",
+        description: "Instant, accurate answers about your company, services, documents, and processes — available 24/7.",
+        image: "https://ik.imagekit.io/sravanth/AI%20CHATBOT%20(2).jpg",
+        link: "#",
+        date: "2024",
+        tags: ["Fast", "Automated", "WhatsApp-ready", "Customer-first UX"],
+        metrics: [
+            "Faster customer responses with automated WhatsApp chat",
+            "Higher lead conversion through instant answers & guided flows",
+            "Reduced support workload with self-serve service explanations",
+            "Consistent, accurate information across all customer interactions"
+        ]
+    },
+    {
+        id: 7,
+        title: "Email Automation — Powered by n8n",
+        category: "n8n",
+        description: "Automated email sequences, follow-ups, and personalized campaigns to nurture leads and engage customers.",
+        image: "https://ik.imagekit.io/sravanth/AI%20CHATBOT%20(3).jpg",
+        link: "#",
+        date: "2024",
+        tags: ["Lead Nurturing", "Automated Follow-ups", "Personalized Campaigns", "Trigger-based Emails"],
+        metrics: [
+            "Increased open rates and click-throughs",
+            "Higher engagement with targeted content",
+            "Improved lead-to-customer conversion rates",
+            "Saved time and resources on manual email tasks"
+        ]
     }
 ];
 
@@ -100,6 +132,7 @@ const Work = () => {
   const categories = [
     { id: 'all', label: 'All Projects' },
     { id: 'website', label: 'Website Design' },
+    { id: 'n8n', label: 'N8N Automation' },
     
   ];
 
@@ -137,7 +170,7 @@ const Work = () => {
       <section className="px-6 mb-12">
         <div className="max-w-7xl mx-auto">
           <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="w-full">
-            <TabsList className="grid w-full grid-cols-2 bg-gray-800/50 mb-8">
+            <TabsList className="grid w-full grid-cols-3 bg-gray-800/50 mb-8">
               {categories.map(category => (
                 <TabsTrigger 
                   key={category.id} 

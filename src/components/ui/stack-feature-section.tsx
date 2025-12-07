@@ -67,7 +67,7 @@ export default function FeatureSection() {
             <Link to="/#contact"> Send Inquiry</Link>
           </Button>
           <Button variant="outline" asChild className="border-cyan-400 text-cyan-400 hover:bg-black hover:text-cyan-400 transition-all duration-300 hover:scale-110">
-            <a href="https://www.linkedin.com/in/sravanth-baratam/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/sana-sravanth-3b084a231" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           </Button>
         </div>
       </div>
