@@ -100,7 +100,7 @@ const Work = () => {
         category: "n8n",
         description: "Instant, accurate answers about your company, services, documents, and processes — available 24/7.",
         image: "https://ik.imagekit.io/sravanth/AI%20CHATBOT%20(2).jpg",
-        link: "#",
+        link: "/ai-chatbot-work", // Updated link
         date: "2024",
         tags: ["Fast", "Automated", "WhatsApp-ready", "Customer-first UX"],
         metrics: [
@@ -116,7 +116,7 @@ const Work = () => {
         category: "n8n",
         description: "Automated email sequences, follow-ups, and personalized campaigns to nurture leads and engage customers.",
         image: "https://ik.imagekit.io/sravanth/AI%20CHATBOT%20(3).jpg",
-        link: "#",
+        link: "/email-automation-work",
         date: "2024",
         tags: ["Lead Nurturing", "Automated Follow-ups", "Personalized Campaigns", "Trigger-based Emails"],
         metrics: [
@@ -195,7 +195,7 @@ const Work = () => {
                 className="bg-gray-900/50 border-gray-800 hover:border-cyan-400/50 transition-all duration-300 hover:scale-105 group animate-fade-in"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <a href={project.link} target="_blank" rel="noopener noreferrer">
+                <Link to={project.link}>
                   <div className="relative overflow-hidden rounded-t-lg">
                     <img 
                       src={project.image} 
@@ -222,7 +222,7 @@ const Work = () => {
                       {project.description}
                     </CardDescription>
                   </CardHeader>
-                </a>
+                </Link>
 
                 <CardContent>
                   <div className="mb-4">
