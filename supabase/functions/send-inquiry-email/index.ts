@@ -28,7 +28,7 @@ const handler = async (req: Request): Promise<Response> => {
   try {
     const data: InquiryRequest = await req.json();
     
-    console.log("Received inquiry:", data);
+    console.log("Received inquiry:", JSON.stringify(data, null, 2));
 
     // Build email content
     let emailContent = `
@@ -44,6 +44,8 @@ const handler = async (req: Request): Promise<Response> => {
     if (data.budget) emailContent += `<p><strong>Budget:</strong> ${data.budget}</p>`;
     if (data.timeline) emailContent += `<p><strong>Timeline:</strong> ${data.timeline}</p>`;
 
+    console.log("Attempting to send email...");
+
     const emailResponse = await resend.emails.send({
       from: "Portfolio Inquiry <onboarding@resend.dev>",
       to: ["sanasravanth25@gmail.com"],
@@ -51,9 +53,9 @@ const handler = async (req: Request): Promise<Response> => {
       html: emailContent,
     });
 
-    console.log("Email sent successfully:", emailResponse);
+    console.log("Email sent successfully. Response:", JSON.stringify(emailResponse, null, 2));
 
-    return new Response(JSON.stringify({ success: true }), {
+    return new Response(JSON.stringify({ success: true, message: "Email sent successfully" }), {
       status: 200,
       headers: {
         "Content-Type": "application/json",
@@ -61,9 +63,10 @@ const handler = async (req: Request): Promise<Response> => {
       },
     });
   } catch (error: any) {
-    console.error("Error in send-inquiry-email function:", error);
+    console.error("Error in send-inquiry-email function:", error.message);
+    console.error("Stack trace:", error.stack);
     return new Response(
-      JSON.stringify({ error: error.message }),
+      JSON.stringify({ error: "Failed to send email.", details: error.message }),
       {
         status: 500,
         headers: { "Content-Type": "application/json", ...corsHeaders },
