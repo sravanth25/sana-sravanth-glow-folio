@@ -1,9 +1,9 @@
 
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import ModernMobileMenu from './ui/modern-mobile-menu';
 
 const Navigation = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
 
   const navItems = [{
@@ -46,7 +46,6 @@ const Navigation = () => {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
-    setIsMenuOpen(false);
   };
 
   return (
@@ -75,32 +74,10 @@ const Navigation = () => {
           ))}
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden text-white hover:text-cyan-400 transition-colors duration-300 p-2 rounded-full hover:bg-gray-800/50"
-        >
-          {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
-      </div>
+        {/* Mobile Menu */}
+        <ModernMobileMenu />
 
-      {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 mt-2 bg-black/95 backdrop-blur-md border border-gray-800 rounded-2xl animate-fade-in">
-          <div className="px-4 py-4 space-y-2">
-            {navItems.map((item, index) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className="block w-full text-left text-white hover:text-cyan-400 transition-colors duration-300 py-3 px-4 rounded-full hover:bg-gray-800/50"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
+      </div>
     </nav>
   );
 };

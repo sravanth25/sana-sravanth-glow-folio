@@ -89,7 +89,7 @@ const Index = () => {
       {/* Main Content with soft entrance animation */}
       {!isLoading && (
         <motion.div 
-          className="min-h-screen bg-black text-white overflow-x-hidden"
+          className="min-h-screen bg-black text-white overflow-x-hidden px-4 sm:px-6 lg:px-8"
           variants={contentVariants}
           initial="hidden"
           animate={showContent ? "visible" : "hidden"}
