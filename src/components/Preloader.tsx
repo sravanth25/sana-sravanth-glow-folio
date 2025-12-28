@@ -12,14 +12,16 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
   const [isComplete, setIsComplete] = useState(false);
 
   useEffect(() => {
+    // Show text after avatar animation
     const textTimer = setTimeout(() => {
       setShowText(true);
     }, 1200);
 
+    // Complete animation after a shorter delay for a smoother transition
     const completeTimer = setTimeout(() => {
       setIsComplete(true);
       onComplete?.();
-    }, 5000);
+    }, 4000);
 
     return () => {
       clearTimeout(textTimer);
@@ -33,7 +35,7 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
         <motion.div
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, scale: 0.95 }}
-          transition={{ duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] }}
+          transition={{ duration: 1, ease: "easeOut" }}
           className="fixed inset-0 z-50 flex items-center justify-center bg-black backdrop-blur-sm"
         >
           {/* Background Glow Effect */}
@@ -46,8 +48,8 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
             />
           </div>
 
-          {/* Responsive Centered Content */}
-          <div className="relative flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-6 px-4">
+          {/* Centered Content - Avatar and Text in One Line */}
+          <div className="relative flex items-center space-x-6 px-4">
             {/* Avatar with Bounce Animation */}
             <motion.div
               initial={{ scale: 0, rotate: -180 }}
@@ -86,25 +88,25 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
               </motion.div>
             </motion.div>
 
-            {/* Welcome Text Animation */}
+            {/* Welcome Text Animation - Inline */}
             <AnimatePresence>
               {showText && (
                 <motion.div
-                  initial={{ opacity: 0, y: 20, scale: 0.9 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  initial={{ opacity: 0, x: 50, scale: 0.8 }}
+                  animate={{ opacity: 1, x: 0, scale: 1 }}
                   transition={{
                     type: "spring",
                     stiffness: 80,
                     damping: 25,
                     delay: 0.3
                   }}
-                  className="text-center md:text-left"
+                  className="text-left"
                 >
                   <motion.h1
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.6, duration: 1.2 }}
-                    className="text-2xl md:text-3xl font-bold text-white"
+                    className="text-xl md:text-2xl lg:text-3xl font-bold text-white whitespace-nowrap"
                   >
                     <motion.span
                       initial={{ opacity: 0, y: 15 }}
@@ -126,7 +128,7 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 1.4, duration: 0.8 }}
-                      className="block text-gray-300 text-lg md:inline"
+                      className="inline-block text-gray-300"
                     >
                       {" — Welcome to my Portfolio!"}
                     </motion.span>
@@ -137,7 +139,7 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1.8, duration: 0.8 }}
-                    className="flex space-x-2 mt-3 justify-center md:justify-start"
+                    className="flex space-x-2 mt-3"
                   >
                     {[0, 1, 2].map((index) => (
                       <motion.div

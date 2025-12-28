@@ -60,9 +60,9 @@ const Index = () => {
       y: 0,
       scale: 1,
       transition: {
-        duration: 0.8,
-        delay: 0.2,
-        staggerChildren: 0.1
+        duration: 1.2, // Slower, more gradual fade-in
+        delay: 0.5,      // Start after a slight delay
+        staggerChildren: 0.2
       }
     }
   };
@@ -76,7 +76,7 @@ const Index = () => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.5
+        duration: 0.8
       }
     }
   };
@@ -89,7 +89,7 @@ const Index = () => {
       {/* Main Content with soft entrance animation */}
       {!isLoading && (
         <motion.div 
-          className="min-h-screen bg-black text-white overflow-x-hidden px-4 sm:px-6 lg:px-8"
+          className="min-h-screen bg-black text-white overflow-x-hidden"
           variants={contentVariants}
           initial="hidden"
           animate={showContent ? "visible" : "hidden"}
