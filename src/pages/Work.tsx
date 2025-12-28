@@ -3,6 +3,7 @@ import { ArrowLeft, ExternalLink, Eye, Calendar, Tag } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import StatusIndicator from '@/components/ui/status-indicator';
 
 const Work = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -149,7 +150,7 @@ const Work = () => {
             <ArrowLeft size={20} />
             <span>Back to Home</span>
           </Link>
-          <div className="text-xl font-bold text-cyan-400">My Portfolio</div>
+          <StatusIndicator />
         </div>
       </div>
 
@@ -264,13 +265,15 @@ const Work = () => {
           <p className="text-xl text-gray-300 mb-8">
             Let's discuss how I can help bring your next project to life with proven strategies and exceptional design.
           </p>
-          <Link 
-            to="/#contact"
+          <a 
+            href="https://wa.me/917684865330?text=Hi%20I%20would%20like%20to%20know%20more"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-semibold rounded-full hover:from-cyan-300 hover:to-blue-400 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/25"
           >
             Let's Work Together
             <ExternalLink className="ml-2" size={20} />
-          </Link>
+          </a>
         </div>
       </section>
     </div>

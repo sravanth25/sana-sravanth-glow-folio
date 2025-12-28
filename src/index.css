@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -35,22 +33,6 @@
     --ring: 222.2 84% 4.9%;
 
     --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
@@ -81,14 +63,6 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 
@@ -96,108 +70,7 @@
   * {
     @apply border-border;
   }
-
   body {
     @apply bg-background text-foreground;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
-}
-
-/* Custom animations and styles */
-@layer utilities {
-  .animate-fade-in {
-    animation: fadeIn 0.6s ease-out forwards;
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes textCycle {
-    0%, 30% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    35%, 65% {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    70%, 100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .animate-text-cycle {
-    animation: textCycle 2s ease-in-out infinite;
-  }
-
-  /* Navigation link animations */
-  .nav-link::after {
-    content: "";
-    position: absolute;
-    bottom: -4px;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background: #00F5D4;
-    transition: all 0.3s ease;
-    transform: translateX(-50%);
-  }
-
-  .nav-link:hover::after {
-    width: 100%;
-  }
-
-  .nav-link.active::after {
-    width: 100%;
-    background: #00F5D4;
-    box-shadow: 0 0 10px #00F5D4;
-  }
-
-  /* Smooth scrolling for all elements */
-  * {
-    scroll-behavior: smooth;
-  }
-
-  /* Custom scrollbar */
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: #111;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: #333;
-    border-radius: 4px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: #00F5D4;
-  }
-
-  /* Gradient text */
-  .gradient-text {
-    background: linear-gradient(135deg, #00F5D4 0%, #00D4AA 50%, #0066FF 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  /* Radial gradient utility */
-  .bg-radial-gradient {
-    background: radial-gradient(circle at center, var(--tw-gradient-stops));
   }
 }

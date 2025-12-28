@@ -1,6 +1,8 @@
-import { ChevronDown, TrendingUp, Target, BarChart, Users, Globe, Mail, Search, Zap, Award, Eye } from 'lucide-react';
+import { ChevronDown, TrendingUp, Target, BarChart, Users, Globe, Mail, Search, Zap, Award, Eye, Download } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { MagneticButton } from "@/components/ui/magnetic-button";
+import StatusIndicator from './ui/status-indicator';
 
 const HeroSection = () => {
   const [mousePosition, setMousePosition] = useState({
@@ -28,15 +30,6 @@ const HeroSection = () => {
 
     return () => clearInterval(interval);
   }, []);
-
-  const scrollToContact = () => {
-    const element = document.getElementById('contact');
-    if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth'
-      });
-    }
-  };
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
@@ -134,6 +127,9 @@ const HeroSection = () => {
 
       <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
         <div className="animate-fade-in">
+          <div className="flex justify-center mb-4">
+            <StatusIndicator />
+          </div>
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
             I help brands grow{' '}
             <span className="text-cyan-400 relative inline-block">
@@ -151,13 +147,17 @@ const HeroSection = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button 
-              onClick={scrollToContact} 
-              className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-semibold rounded-full hover:from-cyan-300 hover:to-blue-400 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/25 transform"
-            >
-              Let's Work Together
-              <ChevronDown className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={20} />
-            </button>
+            <MagneticButton>
+              <a
+                href="https://ik.imagekit.io/sravanth/Sana_Sravanth_Resume%20(1)%20(1).pdf?updatedAt=1766919820779"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-10 py-4 bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-semibold rounded-full hover:from-cyan-300 hover:to-blue-400 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/25"
+              >
+                Download Resume
+                <Download className="ml-2" size={20} />
+              </a>
+            </MagneticButton>
             
             <Link 
               to="/work"
