@@ -13,7 +13,7 @@ const Blog = () => {
       description: "A comprehensive astrology platform with modern UI/UX design, responsive layout, and seamless user experience for astrology consultations.",
       image: "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=600&h=400&fit=crop",
       date: "2024",
-      readTime: "5 min read",
+      readTime: "5 min",
       category: "Astrology Platform",
       highlights: [
         "Modern responsive design",
