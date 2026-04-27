@@ -1,8 +1,5 @@
-
-import { useState } from 'react';
-import { ArrowLeft, ExternalLink, Calendar, Clock, Eye } from 'lucide-react';
+import { ArrowLeft, Calendar, Clock, ExternalLink, Eye } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
 const Blog = () => {
   const featuredProjects = [
@@ -87,25 +84,25 @@ const Blog = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-[#f7f9fb] text-[#191c1e] font-['Manrope',_sans-serif]">
       {/* Header */}
-      <div className="sticky top-0 z-50 bg-black/90 backdrop-blur-md border-b border-gray-800">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-3 text-cyan-400 hover:text-cyan-300 transition-colors">
+      <header className="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div className="max-w-[1280px] mx-auto px-8 py-4 flex items-center justify-between">
+          <Link to="/" className="flex items-center gap-3 text-slate-500 hover:text-slate-900 transition-colors font-medium">
             <ArrowLeft size={20} />
             <span>Back to Home</span>
           </Link>
-          <div className="text-xl font-bold text-cyan-400">Website Design Blog</div>
+          <div className="text-xl font-extrabold text-slate-900 tracking-tighter">Sravanth's Blog</div>
         </div>
-      </div>
+      </header>
 
       {/* Hero Section */}
-      <section className="py-20 px-6">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Website <span className="text-cyan-400">Design</span> Showcase
+      <section className="py-20 px-8">
+        <div className="max-w-4xl mx-auto text-center space-y-6">
+          <h1 className="text-4xl md:text-6xl font-extrabold text-slate-900 leading-[1.2] tracking-tight">
+            Website <span className="text-slate-500">Design</span> Showcase
           </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
             Discover how modern website design transforms businesses and creates exceptional user experiences. 
             Explore my featured projects and insights into the world of web design.
           </p>
@@ -113,141 +110,146 @@ const Blog = () => {
       </section>
 
       {/* Featured Projects */}
-      <section className="px-6 pb-20">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-            Featured <span className="text-cyan-400">Projects</span>
+      <section className="px-8 pb-20">
+        <div className="max-w-[1280px] mx-auto">
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-12 text-center text-slate-900 tracking-tight">
+            Featured Projects
           </h2>
           
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
             {featuredProjects.map((project, index) => (
-              <Card 
+              <div 
                 key={project.id} 
-                className="bg-gray-900/50 border-gray-800 hover:border-cyan-400/50 transition-all duration-300 hover:scale-105 group animate-fade-in"
+                className="bg-white rounded-xl shadow-[0px_4px_20px_rgba(0,0,0,0.05)] overflow-hidden group hover:-translate-y-1 transition-transform duration-300 flex flex-col"
                 style={{ animationDelay: `${index * 200}ms` }}
               >
-                <div className="relative overflow-hidden rounded-t-lg">
+                <div className="relative overflow-hidden aspect-video">
                   <img 
                     src={project.image} 
                     alt={project.title}
-                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <Eye className="text-white" size={24} />
+                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <Eye className="text-white w-8 h-8" />
                   </div>
                 </div>
                 
-                <CardHeader>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs text-cyan-400 font-semibold">{project.category}</span>
-                    <div className="flex items-center gap-2 text-sm text-gray-400">
+                <div className="p-6 flex flex-col flex-grow space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-bold text-slate-900 px-2 py-1 bg-slate-100 rounded-md">
+                      {project.category}
+                    </span>
+                    <div className="flex items-center gap-1.5 text-xs font-medium text-slate-500">
                       <Calendar size={14} />
                       {project.date}
                     </div>
                   </div>
-                  <CardTitle className="text-white group-hover:text-cyan-400 transition-colors">
-                    {project.title}
-                  </CardTitle>
-                  <CardDescription className="text-gray-300">
-                    {project.description}
-                  </CardDescription>
-                </CardHeader>
+                  
+                  <div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-black transition-colors">
+                      {project.title}
+                    </h3>
+                    <p className="text-sm text-slate-600 leading-relaxed line-clamp-2">
+                      {project.description}
+                    </p>
+                  </div>
 
-                <CardContent>
-                  <div className="mb-4">
-                    <h4 className="text-sm font-semibold text-white mb-2">Key Features:</h4>
-                    <ul className="space-y-1">
+                  <div className="flex-grow">
+                    <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider mb-2">Key Features</h4>
+                    <ul className="space-y-1.5">
                       {project.highlights.map((highlight, idx) => (
-                        <li key={idx} className="text-sm text-gray-300 flex items-center gap-2">
-                          <div className="w-1 h-1 bg-cyan-400 rounded-full"></div>
+                        <li key={idx} className="text-xs text-slate-600 flex items-center gap-2">
+                          <div className="w-1.5 h-1.5 bg-black rounded-full flex-shrink-0"></div>
                           {highlight}
                         </li>
                       ))}
                     </ul>
                   </div>
                   
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors font-medium"
-                  >
-                    Visit Website
-                    <ExternalLink size={16} />
-                  </a>
-                </CardContent>
-              </Card>
+                  <div className="pt-4 border-t border-slate-100">
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm font-bold text-slate-900 hover:text-slate-600 transition-colors"
+                    >
+                      Visit Website
+                      <ExternalLink size={16} />
+                    </a>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
 
           {/* Blog Posts Section */}
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-            Latest <span className="text-cyan-400">Articles</span>
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-12 text-center text-slate-900 tracking-tight">
+            Latest Articles
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {blogPosts.map((post, index) => (
-              <Card 
+              <div 
                 key={post.id} 
-                className="bg-gray-900/50 border-gray-800 hover:border-cyan-400/50 transition-all duration-300 hover:scale-105 group animate-fade-in cursor-pointer"
+                className="bg-white rounded-xl shadow-[0px_4px_20px_rgba(0,0,0,0.05)] overflow-hidden group hover:-translate-y-1 transition-transform duration-300 cursor-pointer flex flex-col"
                 style={{ animationDelay: `${index * 150}ms` }}
               >
-                <div className="relative overflow-hidden rounded-t-lg">
+                <div className="relative overflow-hidden aspect-video">
                   <img 
                     src={post.image} 
                     alt={post.title}
-                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-cyan-400 text-black text-xs font-semibold rounded-full">
+                    <span className="px-3 py-1 bg-black text-white text-xs font-bold rounded-full shadow-sm">
                       {post.category}
                     </span>
                   </div>
                 </div>
                 
-                <CardHeader>
-                  <CardTitle className="text-white group-hover:text-cyan-400 transition-colors line-clamp-2">
-                    {post.title}
-                  </CardTitle>
-                  <CardDescription className="text-gray-300 line-clamp-3">
-                    {post.excerpt}
-                  </CardDescription>
-                </CardHeader>
+                <div className="p-6 flex flex-col flex-grow space-y-4">
+                  <div className="flex-grow">
+                    <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-black transition-colors line-clamp-2">
+                      {post.title}
+                    </h3>
+                    <p className="text-sm text-slate-600 leading-relaxed line-clamp-3">
+                      {post.excerpt}
+                    </p>
+                  </div>
 
-                <CardContent>
-                  <div className="flex items-center justify-between text-sm text-gray-400">
-                    <div className="flex items-center gap-2">
+                  <div className="flex items-center justify-between text-xs font-medium text-slate-500 pt-4 border-t border-slate-100">
+                    <div className="flex items-center gap-1.5">
                       <Calendar size={14} />
                       {new Date(post.date).toLocaleDateString()}
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1.5">
                       <Clock size={14} />
                       {post.readTime}
                     </div>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-6 border-t border-gray-800">
+      <section className="py-20 px-8 bg-white border-t border-slate-200">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Ready to Build Your <span className="text-cyan-400">Website</span>?
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-6 text-slate-900 tracking-tight">
+            Ready to Build Your Website?
           </h2>
-          <p className="text-xl text-gray-300 mb-8">
+          <p className="text-lg text-slate-600 mb-8 max-w-2xl mx-auto">
             Let's create a stunning website that represents your brand and drives results. 
             Get in touch to discuss your project requirements.
           </p>
           <Link 
             to="/#contact"
-            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-semibold rounded-full hover:from-cyan-300 hover:to-blue-400 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/25"
+            className="inline-flex items-center px-8 py-4 bg-black text-white font-bold rounded-full hover:bg-slate-800 transition-colors hover:scale-105 transform duration-300 shadow-lg"
           >
             Start Your Project
-            <ExternalLink className="ml-2" size={20} />
+            <ExternalLink className="ml-2 w-5 h-5" />
           </Link>
         </div>
       </section>

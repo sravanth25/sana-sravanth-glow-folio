@@ -12,6 +12,7 @@ import SeoGuide from "./pages/SeoGuide";
 import MetaGoogleAds from "./pages/MetaGoogleAds";
 import DemoOne from "./pages/demo";
 import NotFound from "./pages/NotFound";
+import LegalArchive from "./pages/LegalArchive";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,7 @@ const App = () => (
           <Route path="/seo-guide" element={<SeoGuide />} />
           <Route path="/meta-google-ads" element={<MetaGoogleAds />} />
           <Route path="/demo" element={<DemoOne />} />
+          <Route path="/legal-archive" element={<LegalArchive />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
